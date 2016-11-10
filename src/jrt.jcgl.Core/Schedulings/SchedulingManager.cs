@@ -1,0 +1,217 @@
+﻿using Abp.Dependency;
+using Abp.Domain.Repositories;
+using jrt.jcgl.Organizations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace jrt.jcgl.Schedulings
+{
+    public class SchedulingManager : ITransientDependency, ISchedulingManager
+    {
+        private readonly IRepository<Scheduling, long> _schedulingRepository;
+        private readonly IRepository<Organization, long> _organizationRepository;
+        public SchedulingManager(IRepository<Scheduling, long> _personRepository,
+            IRepository<Organization, long> _organizationRepository)
+        {
+            this._schedulingRepository = _personRepository;
+            this._organizationRepository = _organizationRepository;
+        }
+        /// <summary>
+        /// 根据批号预排班
+        /// </summary>
+        /// <param name="BatchNum"></param>
+        /// <returns></returns>
+        public async Task SchedulingWork(string BatchNum)
+        {
+            try
+            {
+                var extract = await getExtract();
+                var membrane = await getMembrane();
+                //TODO:休息日先不考虑
+                #region 不考虑节假日版本
+                //for (int i = 0; i < 5; i++)
+                //{
+                //    for (int j = 0; j < 3; j++)
+                //    {
+                //        var date = BatchNumConvertToDate(BatchNum, i);
+                //        var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == date && s.WorkType == (WorkType)j);
+                //        if (exscheduling == null)
+                //            await _schedulingRepository.InsertAsync(new Scheduling
+                //            {
+                //                SchedulingDate = BatchNumConvertToDate(BatchNum, i),
+                //                ExtractBatchNum = i <= 2 ? BatchNum : null,
+                //                MembraneBatchNum = i >= 2 ? BatchNum : null,
+                //                WorkType = (WorkType)j,
+                //                ExtractMemberId = i <= 2 ? (long?)extract[DistributionMember(i, j)].OrganizationUnitId : null,
+                //                MembraneMemberId = i >= 2 ? (long?)membrane[DistributionMember(i - 2, j)].OrganizationUnitId : null
+                //            });
+                //        else
+                //        {
+                //            exscheduling.ExtractBatchNum = i <= 2 ? BatchNum : null;
+                //            exscheduling.ExtractMemberId = i <= 2 ? (long?)extract[DistributionMember(i, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
+                //            await _schedulingRepository.UpdateAsync(exscheduling);
+                //        }
+                //    }
+                //}
+                #endregion
+                #region 考虑节假日版本
+                int day = 0;
+                int count = 0;
+                while (true)
+                {
+                    var workdate = BatchNumConvertToDate(BatchNum, day);
+                    if (!isHoliday(workdate.ToString("yyyyMMdd")))
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            var date = workdate;
+                            var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == date && s.WorkType == (WorkType)j);
+                            if (exscheduling == null)
+                                await _schedulingRepository.InsertAsync(new Scheduling
+                                {
+                                    SchedulingDate = workdate,
+                                    ExtractBatchNum = count <= 2 ? BatchNum : null,
+                                    MembraneBatchNum = count >= 2 ? BatchNum : null,
+                                    WorkType = (WorkType)j,
+                                    ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
+                                    MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null
+                                });
+                            else
+                            {
+                                exscheduling.ExtractBatchNum = count <= 2 ? BatchNum : null;
+                                exscheduling.ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
+                                await _schedulingRepository.UpdateAsync(exscheduling);
+                            }
+                        }
+                        count++;
+                    }
+                    day++;
+                    if (count == 5)
+                        break;
+                }
+                #endregion
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        /// <summary>
+        /// 根据生产批号获取日期
+        /// </summary>
+        /// <param name="BatchNum"></param>
+        /// <returns></returns>
+        private DateTime BatchNumConvertToDate(string BatchNum, int i)
+        {
+            int year = Convert.ToInt32(BatchNum.Substring(2, 4));
+            int month = Convert.ToInt32(BatchNum.Substring(6, 2));
+            int day = Convert.ToInt32(BatchNum.Substring(8, 2)) + i;
+            if ((month == 1 ||
+                month == 3 ||
+                month == 5 ||
+                month == 7 ||
+                month == 8 ||
+                month == 10 ||
+                month == 12) && day > 31)
+            {
+                month++;
+                day = i;
+            }
+            if ((month == 4 ||
+                month == 6 ||
+                month == 9 ||
+                month == 11) && day > 30)
+            {
+                month++;
+                day = i;
+            }
+            if (year % 4 == 0 && month == 2 && day > 29)
+            {
+                month++;
+                day = i;
+            }
+            if (year % 4 != 0 && month == 2 && day > 28)
+            {
+                month++;
+                day = i;
+            }
+            return new DateTime(year, month, day);
+        }
+        /// <summary>
+        /// 分配生产人员
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="workttpe"></param>
+        /// <returns></returns>
+        private int DistributionMember(int date, int worktype)
+        {
+            int member = date + worktype;
+            if (member >= 3)
+                member = member - 3;
+            return member;
+        }
+
+        private async Task<List<OrganizationMember>> getExtract()
+        {
+            List<OrganizationMember> list = new List<OrganizationMember>();
+
+            var Extract = await _organizationRepository.GetAllListAsync(o => o.Type == OrganizationType.Extract && o.OrganizationUnit1.ParentId != null);
+
+            for (int i = 0; i < 3; i++)
+            {
+                list.Add(new OrganizationMember
+                {
+                    Num = i,
+                    OrganizationUnitId = Extract[i].OrganizationUnitId
+                });
+            }
+
+            return list;
+        }
+
+        private async Task<List<OrganizationMember>> getMembrane()
+        {
+            List<OrganizationMember> list = new List<OrganizationMember>();
+
+            var Membrane = await _organizationRepository.GetAllListAsync(o => o.Type == OrganizationType.Membrane && o.OrganizationUnit1.ParentId != null);
+
+            for (int i = 0; i < 3; i++)
+            {
+                list.Add(new OrganizationMember
+                {
+                    Num = i,
+                    OrganizationUnitId = Membrane[i].OrganizationUnitId
+                });
+            }
+
+            return list;
+        }
+
+        private bool isHoliday(string day)
+        {
+            string url = string.Format("http://www.easybots.cn/api/holiday.php?d={0}",day);
+            WebClient wc = new WebClient();
+            Encoding enc = Encoding.GetEncoding("UTF-8");
+            byte[] pageData = wc.DownloadData(url);
+            string re = enc.GetString(pageData);
+            var a = re.Substring(13, 1);
+
+            if (a == "0")
+                return false;
+            else
+                return true;
+        }
+    }
+
+    public class OrganizationMember
+    {
+        public int Num { get; set; }
+
+        public long OrganizationUnitId { get; set; }
+    }
+}
