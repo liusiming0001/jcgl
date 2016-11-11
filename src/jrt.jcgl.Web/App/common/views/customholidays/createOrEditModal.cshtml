@@ -1,0 +1,23 @@
+﻿@using jrt.jcgl.Authorization.Roles
+<div>
+    <form name="cusomHolidayCreateOrEditForm" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span> @L("CreateCustomHolidays")</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group form-md-line-input  no-hint">
+                <label>@L("CustomHolidays")</label>
+                @*<input class="form-control" type="date" name="CusomHolidaysDate" ng-class="{'edited':vm.holiday}" ng-model="vm.holiday">*@
+                <input type="date" id="CusomHolidaysDate" name="CusomHolidaysDate" ng-model="vm.holiday"
+                       placeholder="yyyy-MM-dd" required />
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
+            <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="cusomHolidayCreateOrEditForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        </div>
+    </form>
+</div>

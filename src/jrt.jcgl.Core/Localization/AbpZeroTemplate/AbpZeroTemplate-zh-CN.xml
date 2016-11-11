@@ -297,6 +297,10 @@
     <text name="NightWork" value="晚班"/>
     <text name="CustomHolidays" value="自定义假期"/>
     <text name="CustomHolidays.Create" value="自定义假期创建"/>
+    <text name="CreateCustomHolidays" value="创建自定义假期"/>
     <text name="CustomHolidays.Delete" value="自定义假期删除"/>
+    <text name="CustomHolidaysHeaderInfo" value="排班选择自定义上班日模式，在这里添加休息日"/>
+    <text name="Holidays" value="休息日"/>
+    <text name="CustomHolidayDeleteWarningMessage" value="确定要删除该休息日吗？"/>
   </texts>
 </localizationDictionary>

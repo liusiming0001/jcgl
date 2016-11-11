@@ -136,6 +136,7 @@
     <Compile Include="Schedulings\ISchedulingManager.cs" />
     <Compile Include="Schedulings\Scheduling.cs" />
     <Compile Include="Schedulings\SchedulingManager.cs" />
+    <Compile Include="Schedulings\SchedulingType.cs" />
     <Compile Include="Security\SimpleStringCipher.cs" />
     <Compile Include="Storage\DbBinaryObjectManager.cs" />
     <Compile Include="Storage\IBinaryObjectManager.cs" />

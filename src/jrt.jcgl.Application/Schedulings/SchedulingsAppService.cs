@@ -24,9 +24,9 @@ namespace jrt.jcgl.Schedulings
             this._schedulingRepository = _schedulingRepository;
         }
 
-        public async Task SchedulingWork(string BatchNum)
+        public async Task SchedulingWork(string BatchNum,int type)
         {
-            await _schedulingManager.SchedulingWork(BatchNum);
+            await _schedulingManager.SchedulingWork(BatchNum,(SchedulingType)type);
         }
 
         public async Task<ListResultOutput<SchedulingListDto>> GetSchedulingList()
@@ -43,7 +43,7 @@ namespace jrt.jcgl.Schedulings
                             };
 
                 var items = await query.ToListAsync();
-
+                
                 return new ListResultOutput<SchedulingListDto> (
                     items.Select(item=>
                         {
@@ -52,7 +52,7 @@ namespace jrt.jcgl.Schedulings
                             dto.MembraneMemberName=item.membraneMemberName;
                             return dto;
                         }
-                        ).ToList()
+                        ).OrderBy(i => i.SchedulingDate).ToList()
                 );
             }
             catch (Exception e)

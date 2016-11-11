@@ -116,7 +116,7 @@
             };
 
             vm.createUser = function () {
-                schedulingsService.schedulingWork("JP2016120801").success(function () { vm.getschedulings(); });
+                schedulingsService.schedulingWork("JP2016111801",1).success(function () { vm.getschedulings(); });
             };
 
             vm.getschedulings();

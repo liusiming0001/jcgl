@@ -59,10 +59,10 @@
 
         public const string Pages_Administration_Host_Settings = "Pages.Administration.Host.Settings";
 
-        public const string Pages_Administration_Schedulings = "Pages_Administration_Schedulings";
+        public const string Pages_Administration_Schedulings = "Pages.Administration.Schedulings";
 
-        public const string Pages_Administration_CustomHolidays = "Pages_Administration_CustomHolidays";
-        public const string Pages_Administration_CustomHolidays_Create = "Pages_Administration_CustomHolidays.Create";
-        public const string Pages_Administration_CustomHolidays_Delete = "Pages_Administration_CustomHolidays.Delete";
+        public const string Pages_Administration_CustomHolidays = "Pages.Administration.CustomHolidays";
+        public const string Pages_Administration_CustomHolidays_Create = "Pages.Administration.CustomHolidays.Create";
+        public const string Pages_Administration_CustomHolidays_Delete = "Pages.Administration.CustomHolidays.Delete";
     }
 }

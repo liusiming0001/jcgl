@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace jrt.jcgl.Schedulings
 {
-    public interface ISchedulingManager
+    public enum SchedulingType
     {
-        Task SchedulingWork(string BatchNum, SchedulingType type);
+        Normal,
+        Single,
+        Custom
     }
 }

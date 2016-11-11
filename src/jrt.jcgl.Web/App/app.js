@@ -115,11 +115,19 @@ appModule.config([
             });
         }
 
-        if (abp.auth.hasPermission('Pages_Administration_Schedulings')) {
+        if (abp.auth.hasPermission('Pages.Administration.Schedulings')) {
             $stateProvider.state('schedulings', {
                 url: '/schedulings',
                 templateUrl: '~/App/common/views/schedulings/index.cshtml',
                 menu: 'Administration.Schedulings'
+            });
+        }
+
+        if (abp.auth.hasPermission('Pages.Administration.CustomHolidays')) {
+            $stateProvider.state('customholidays', {
+                url: '/customholidays',
+                templateUrl: '~/App/common/views/customholidays/index.cshtml',
+                menu: 'Administration.CustomHolidays'
             });
         }
         //HOST routes
@@ -185,7 +193,7 @@ appModule.config([
 
 appModule.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
     $rootScope.$state = $state;
-    $rootScope.$settings = settings; 
+    $rootScope.$settings = settings;
 
     $rootScope.safeApply = function (fn) {
         var phase = this.$root.$$phase;

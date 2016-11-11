@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 
 namespace jrt.jcgl.CusomHolidays
 {
-    public interface ICusomHolidaysAppService: IApplicationService
+    public interface ICustomHolidaysAppService: IApplicationService
     {
         Task<PagedResultOutput<CustomHolidayListDto>> GetCusomHolidayList(GetCustomHolidayListInput input);
 
         Task CreateCustomHoliday(DateTime holiday);
 
         Task DeleteCustomHoliday(long id);
+
+        Task<CreateCustomHolidayDto> CreateInit();
     }
 }

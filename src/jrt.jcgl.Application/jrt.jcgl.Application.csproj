@@ -136,10 +136,11 @@
     <Compile Include="Common\Dto\FindUsersInput.cs" />
     <Compile Include="Common\ICommonLookupAppService.cs" />
     <Compile Include="Configuration\Tenants\Dto\LdapSettingsEditDto.cs" />
-    <Compile Include="CusomHolidays\CusomHolidaysAppService.cs" />
+    <Compile Include="CusomHolidays\CustomHolidaysAppService.cs" />
+    <Compile Include="CusomHolidays\Dto\CreateCustomHolidayDto.cs" />
     <Compile Include="CusomHolidays\Dto\CustomHolidayListDto.cs" />
     <Compile Include="CusomHolidays\Dto\GetCustomHolidayListInput.cs" />
-    <Compile Include="CusomHolidays\ICusomHolidaysAppService.cs" />
+    <Compile Include="CusomHolidays\ICustomHolidaysAppService.cs" />
     <Compile Include="DataExporting\Excel\EpPlus\EpPlusExcelExporterBase.cs" />
     <Compile Include="Dto\PagedAndFilteredInputDto.cs" />
     <Compile Include="Dto\PagedSortedAndFilteredInputDto.cs" />

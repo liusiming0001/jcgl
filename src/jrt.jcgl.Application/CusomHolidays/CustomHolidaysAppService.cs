@@ -2,6 +2,7 @@
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using jrt.jcgl.CusomHolidays.Dto;
 using jrt.jcgl.CustomHolidays;
 using System;
@@ -13,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace jrt.jcgl.CusomHolidays
 {
-    public class CusomHolidaysAppService:AbpZeroTemplateAppServiceBase,ICusomHolidaysAppService
+    public class CustomHolidaysAppService : AbpZeroTemplateAppServiceBase, ICustomHolidaysAppService
     {
         private readonly IRepository<CustomHoliday, long> _cusomHolidayRepository;
 
-        public CusomHolidaysAppService(IRepository<CustomHoliday, long> _cusomHolidayRepository)
+        public CustomHolidaysAppService(IRepository<CustomHoliday, long> _cusomHolidayRepository)
         {
             this._cusomHolidayRepository = _cusomHolidayRepository;
         }
@@ -47,7 +48,11 @@ namespace jrt.jcgl.CusomHolidays
         {
             try
             {
-               await _cusomHolidayRepository.InsertAsync(new CustomHoliday { Holiday=holiday});
+                var cutomholiday = await _cusomHolidayRepository.FirstOrDefaultAsync(c => c.Holiday == holiday);
+                if (cutomholiday == null)
+                    await _cusomHolidayRepository.InsertAsync(new CustomHoliday { Holiday = holiday });
+                else
+                    throw new UserFriendlyException("这个休息日已经存在，请不要重复添加");
             }
             catch (Exception e)
             {
@@ -65,6 +70,11 @@ namespace jrt.jcgl.CusomHolidays
             {
                 throw e;
             }
+        }
+
+        public async Task<CreateCustomHolidayDto> CreateInit()
+        {
+            return new CreateCustomHolidayDto();
         }
     }
 }

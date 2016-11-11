@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace jrt.jcgl.Schedulings
 {
-    public interface ISchedulingsAppService: IApplicationService
+    public interface ISchedulingsAppService : IApplicationService
     {
-        Task SchedulingWork(string BatchNum);
+        Task SchedulingWork(string BatchNum, int type);
 
         Task<ListResultOutput<SchedulingListDto>> GetSchedulingList();
     }
