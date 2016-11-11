@@ -107,6 +107,7 @@
     <Compile Include="Authorization\Roles\RoleStore.cs" />
     <Compile Include="Authorization\Roles\Role.cs" />
     <Compile Include="Authorization\Roles\RoleManager.cs" />
+    <Compile Include="Authorization\Roles\StaticRoleDisplayNames.cs" />
     <Compile Include="Authorization\Roles\StaticRoleNames.cs" />
     <Compile Include="Authorization\Users\IUserEmailer.cs" />
     <Compile Include="Authorization\Users\UserEmailer.cs" />

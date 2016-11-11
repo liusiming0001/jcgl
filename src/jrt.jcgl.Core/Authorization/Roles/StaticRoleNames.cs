@@ -12,6 +12,10 @@
             public const string Admin = "Admin";
 
             public const string User = "User";
+
+            public const string Extract = "Extract";
+
+            public const string Membrane = "Membrane";
         }
     }
 }

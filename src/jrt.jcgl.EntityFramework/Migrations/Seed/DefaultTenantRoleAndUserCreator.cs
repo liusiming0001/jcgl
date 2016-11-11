@@ -9,21 +9,24 @@ using jrt.jcgl.Authorization.Users;
 using jrt.jcgl.Editions;
 using jrt.jcgl.EntityFramework;
 using jrt.jcgl.MultiTenancy;
+using Microsoft.AspNet.Identity;
 
 namespace jrt.jcgl.Migrations.Seed
 {
-    /// <summary>
-    /// This class is used to default tenants, roles and users when application is installed.
-    /// It's also used in tests as startup state of the system.
-    /// </summary>
+    /// <summary> 
+    /// This class is used to default tenants, roles and users when application is installed. 
+    /// It's also used in tests as startup state of the system. 
+    /// </summary> 
     public class DefaultTenantRoleAndUserCreator
     {
         private readonly AbpZeroTemplateDbContext _context;
+
 
         public DefaultTenantRoleAndUserCreator(AbpZeroTemplateDbContext context)
         {
             _context = context;
         }
+
 
         public void Create()
         {
@@ -31,9 +34,11 @@ namespace jrt.jcgl.Migrations.Seed
             CreateDefaultTenantAndUsers();
         }
 
+
         private void CreateHostAndUsers()
         {
-            //Admin role for host
+            //Admin role for host 
+
 
             var adminRoleForHost = _context.Roles.FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Host.Admin);
             if (adminRoleForHost == null)
@@ -42,7 +47,9 @@ namespace jrt.jcgl.Migrations.Seed
                 _context.SaveChanges();
             }
 
-            //admin user for host
+
+            //admin user for host 
+
 
             var adminUserForHost = _context.Users.FirstOrDefault(u => u.TenantId == null && u.UserName == User.AdminUserName);
             if (adminUserForHost == null)
@@ -58,19 +65,22 @@ namespace jrt.jcgl.Migrations.Seed
                         IsEmailConfirmed = true,
                         ShouldChangePasswordOnNextLogin = true,
                         IsActive = true,
-                        Password = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
+                        Password = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe 
                     });
                 _context.SaveChanges();
 
-                //Assign Admin role to admin user
+
+                //Assign Admin role to admin user 
                 _context.UserRoles.Add(new UserRole(adminUserForHost.Id, adminRoleForHost.Id));
                 _context.SaveChanges();
 
-                //Grant all permissions
+
+                //Grant all permissions 
                 var permissions = PermissionFinder
                     .GetAllPermissions(new AppAuthorizationProvider())
                     .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Host))
                     .ToList();
+
 
                 foreach (var permission in permissions)
                 {
@@ -86,18 +96,22 @@ namespace jrt.jcgl.Migrations.Seed
                     }
                 }
 
+
                 _context.SaveChanges();
             }
         }
 
+
         private void CreateDefaultTenantAndUsers()
         {
-            //Default tenant
+            //Default tenant 
+
 
             var defaultTenant = _context.Tenants.FirstOrDefault(t => t.TenancyName == Tenant.DefaultTenantName);
             if (defaultTenant == null)
             {
                 defaultTenant = new Tenant(Tenant.DefaultTenantName, Tenant.DefaultTenantName);
+
 
                 var defaultEdition = _context.Editions.FirstOrDefault(e => e.Name == EditionManager.DefaultEditionName);
                 if (defaultEdition != null)
@@ -105,11 +119,14 @@ namespace jrt.jcgl.Migrations.Seed
                     defaultTenant.EditionId = defaultEdition.Id;
                 }
 
+
                 defaultTenant = _context.Tenants.Add(defaultTenant);
                 _context.SaveChanges();
             }
 
-            //Admin role for 'Default' tenant
+
+            //Admin role for 'Default' tenant 
+
 
             var adminRoleForDefaultTenant = _context.Roles.FirstOrDefault(r => r.TenantId == defaultTenant.Id && r.Name == StaticRoleNames.Tenants.Admin);
             if (adminRoleForDefaultTenant == null)
@@ -118,7 +135,9 @@ namespace jrt.jcgl.Migrations.Seed
                 _context.SaveChanges();
             }
 
-            //User role for 'Default' tenant
+
+            //User role for 'Default' tenant 
+
 
             var userRoleForDefaultTenant = _context.Roles.FirstOrDefault(r => r.TenantId == defaultTenant.Id && r.Name == StaticRoleNames.Tenants.User);
             if (userRoleForDefaultTenant == null)
@@ -127,7 +146,9 @@ namespace jrt.jcgl.Migrations.Seed
                 _context.SaveChanges();
             }
 
-            //admin user for 'Default' tenant
+
+            //admin user for 'Default' tenant 
+
 
             var adminUserForDefaultTenant = _context.Users.FirstOrDefault(u => u.TenantId == defaultTenant.Id && u.UserName == User.AdminUserName);
             if (adminUserForDefaultTenant == null)
@@ -137,18 +158,22 @@ namespace jrt.jcgl.Migrations.Seed
                 adminUserForDefaultTenant.ShouldChangePasswordOnNextLogin = true;
                 adminUserForDefaultTenant.IsActive = true;
 
+
                 _context.Users.Add(adminUserForDefaultTenant);
                 _context.SaveChanges();
 
-                //Assign Admin role to admin user
+
+                //Assign Admin role to admin user 
                 _context.UserRoles.Add(new UserRole(adminUserForDefaultTenant.Id, adminRoleForDefaultTenant.Id));
                 _context.SaveChanges();
 
-                //Grant all permissions
+
+                //Grant all permissions 
                 var permissions = PermissionFinder
                     .GetAllPermissions(new AppAuthorizationProvider())
                     .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant))
                     .ToList();
+
 
                 foreach (var permission in permissions)
                 {
@@ -164,6 +189,60 @@ namespace jrt.jcgl.Migrations.Seed
                     }
                 }
 
+
+                _context.SaveChanges();
+            }
+
+            AddDefaultRoles(defaultTenant);
+        }
+
+        private void AddDefaultRoles(Tenant defaluttenants)
+        {
+            var extract = _context.Roles.FirstOrDefault(r => r.TenantId == defaluttenants.Id && r.Name == StaticRoleNames.Tenants.Extract);
+            if (extract == null)
+            {
+                extract = _context.Roles.Add(new Role(defaluttenants.Id, StaticRoleNames.Tenants.Extract, StaticRoleDisplayNames.Tenants.Extract) { IsStatic = true });
+                _context.SaveChanges();
+            }
+            InsertCustomers(defaluttenants, extract, "提取一组一号");
+            InsertCustomers(defaluttenants, extract, "提取二组一号");
+            InsertCustomers(defaluttenants, extract, "提取三组一号");
+            var membrane = _context.Roles.FirstOrDefault(r => r.TenantId == defaluttenants.Id && r.Name == StaticRoleNames.Tenants.Membrane);
+            if (membrane == null)
+            {
+                membrane = _context.Roles.Add(new Role(defaluttenants.Id, StaticRoleNames.Tenants.Membrane, StaticRoleDisplayNames.Tenants.Membrane) { IsStatic = true });
+                _context.SaveChanges();
+            }
+            InsertCustomers(defaluttenants, membrane, "膜一组一号");
+            InsertCustomers(defaluttenants, membrane, "膜二组一号");
+            InsertCustomers(defaluttenants, membrane, "膜三组一号");
+        }
+
+        private void InsertCustomers(Tenant defaultTenant, Role userRoleForDefaultTenant, string customerName)
+        {
+            var testUserForDefaultTenant = _context.Users.FirstOrDefault(u => u.TenantId == defaultTenant.Id && u.UserName == customerName);
+            if (testUserForDefaultTenant == null)
+            {
+                testUserForDefaultTenant = new User
+                {
+                    TenantId = defaultTenant.Id,
+                    UserName = customerName,
+                    Name = customerName,
+                    Surname = customerName,
+                    EmailAddress = $"{customerName}@JJtemp.com",
+                    Password = new PasswordHasher().HashPassword("123qwe")
+                };
+
+                testUserForDefaultTenant.IsEmailConfirmed = true;
+                testUserForDefaultTenant.ShouldChangePasswordOnNextLogin = true;
+                testUserForDefaultTenant.IsActive = true;
+
+
+                _context.Users.Add(testUserForDefaultTenant);
+                _context.SaveChanges();
+
+                //Assign role to admin user
+                _context.UserRoles.Add(new UserRole(testUserForDefaultTenant.Id, userRoleForDefaultTenant.Id));
                 _context.SaveChanges();
             }
         }
