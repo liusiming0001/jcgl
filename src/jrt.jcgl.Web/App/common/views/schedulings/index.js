@@ -17,13 +17,8 @@
                 maxResultCount: app.consts.grid.defaultPageSize,
                 sorting: null
             };
-
-            var todayAsString = moment().format('YYYY-MM-DD');
-            vm.dateRangeOptions = app.createDateRangePickerOptions();
-            vm.dateRangeModel = {
-                startDate: todayAsString,
-                endDate: todayAsString
-            };
+            vm.startdate = null;
+            vm.enddate = null;
             vm.schedulingsGridOptions = {
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.WHEN_NEEDED,
                 enableVerticalScrollbar: uiGridConstants.scrollbars.WHEN_NEEDED,
@@ -129,8 +124,8 @@
                     skipCount: requestParams.skipCount,
                     maxResultCount: requestParams.maxResultCount,
                     sorting: requestParams.sorting,
-                    startDate: vm.dateRangeModel.startDate,
-                    endDate:vm.dateRangeModel.endDate
+                    startDate: vm.startdate,
+                    endDate:vm.enddate
                 }).success(function (result) {
                     vm.schedulingsGridOptions.data = result.items;
                     console.log(result);
@@ -161,6 +156,21 @@
                 });
             }
 
+            vm.exportToExcel = function ()
+            {
+                schedulingsService.exportToExcel({
+                    skipCount: requestParams.skipCount,
+                    maxResultCount: requestParams.maxResultCount,
+                    sorting: requestParams.sorting,
+                    startDate: vm.startdate,
+                    endDate: vm.enddate
+                }).success(function (result) {
+                    app.downloadTempFile(result);
+                });
+            }
+            vm.change = function () {
+                console.log(vm.date);
+            };
             vm.getschedulings();
         }]);
 })();

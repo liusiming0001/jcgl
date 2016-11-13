@@ -10,9 +10,31 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-6 text-right">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
         <div class="form">
             <form class="horizontal-form">
-                <div class="row">
+                <div class="form-body" style="padding-left:0px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">@L("DateRange")</label>
+                                <input type="date" id="startdate" name="input" ng-model="vm.startdate" ng-change="vm.getschedulings()"
+                                       placeholder="yyyy-MM-dd" />
+                            -
+                                <input type="date" id="enddate" name="input" ng-model="vm.enddate" ng-change="vm.getschedulings()"
+                                       placeholder="yyyy-MM-dd" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-bottom-10">
+                    <div class="col-sm-6">
+                    </div>
                     <div class="col-xs-6 text-right">
                         <button class="btn btn-default" ng-click="vm.exportToExcel()"><i class="fa fa-file-excel-o"></i> @L("ExportToExcel")</button>
                         <button class="btn btn-primary blue" ng-click="vm.createschedulings()"><i class="fa fa-plus"></i> @L("CreateNewSchedulings")</button>
@@ -20,9 +42,8 @@
                 </div>
             </form>
         </div>
-        <div class="portlet-body">
-            <div busy-if="vm.loading">
-                <div ui-grid="vm.schedulingsGridOptions" ui-grid-pagination ui-grid-resize-columns dir=@(CultureHelper.IsRtl ? "rtl" : "")></div>
-            </div>
+        <div busy-if="vm.loading">
+            <div ui-grid="vm.schedulingsGridOptions" ui-grid-pagination ui-grid-resize-columns dir=@(CultureHelper.IsRtl ? "rtl" : "")></div>
         </div>
     </div>
+</div>

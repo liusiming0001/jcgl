@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using jrt.jcgl.Dto;
 using jrt.jcgl.Schedulings.Dto;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,7 @@ namespace jrt.jcgl.Schedulings
         CreateSchedulingWorkDto InitCreateDto();
 
         ListResultDto<NameValueDto> GetSchedulingTypes();
+
+        Task<FileDto> ExportToExcel(GetSchedulingWorkInput input);
     }
 }

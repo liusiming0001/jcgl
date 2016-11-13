@@ -214,6 +214,8 @@
     <Compile Include="Schedulings\Dto\CreateSchedulingWorkDto.cs" />
     <Compile Include="Schedulings\Dto\GetSchedulingWorkInput.cs" />
     <Compile Include="Schedulings\Dto\SchedulingListDto.cs" />
+    <Compile Include="Schedulings\Exporting\ISchedulingsListExcelExporter.cs" />
+    <Compile Include="Schedulings\Exporting\SchedulingsListExcelExporter.cs" />
     <Compile Include="Schedulings\ISchedulingsAppService.cs" />
     <Compile Include="Schedulings\SchedulingsAppService.cs" />
     <Compile Include="Sessions\Dto\GetCurrentLoginInformationsOutput.cs" />
