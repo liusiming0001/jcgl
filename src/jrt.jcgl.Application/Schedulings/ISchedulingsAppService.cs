@@ -11,8 +11,12 @@ namespace jrt.jcgl.Schedulings
 {
     public interface ISchedulingsAppService : IApplicationService
     {
-        Task SchedulingWork(string BatchNum, int type);
+        Task SchedulingWork(CreateSchedulingWorkDto input);
 
-        Task<ListResultOutput<SchedulingListDto>> GetSchedulingList();
+        Task<PagedResultOutput<SchedulingListDto>> GetSchedulingList(GetSchedulingWorkInput input);
+
+        CreateSchedulingWorkDto InitCreateDto();
+
+        ListResultDto<NameValueDto> GetSchedulingTypes();
     }
 }

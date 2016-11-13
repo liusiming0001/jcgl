@@ -18,6 +18,12 @@
                 sorting: null
             };
 
+            var todayAsString = moment().format('YYYY-MM-DD');
+            vm.dateRangeOptions = app.createDateRangePickerOptions();
+            vm.dateRangeModel = {
+                startDate: todayAsString,
+                endDate: todayAsString
+            };
             vm.schedulingsGridOptions = {
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.WHEN_NEEDED,
                 enableVerticalScrollbar: uiGridConstants.scrollbars.WHEN_NEEDED,
@@ -31,17 +37,20 @@
                     {
                         name: app.localize('SchedulingDate'),
                         field: 'schedulingDate',
+                        enableSorting: false,
                         cellFilter: 'momentFormat: \'L\'',
                         minWidth: 100
                     },
                     {
                         name: app.localize('ExtractBatchNum'),
                         field: 'extractBatchNum',
+                        enableSorting: false,
                         minWidth: 120
                     },
                     {
                         name: app.localize('ExtractMemberName'),
                         field: 'extractMemberName',
+                        enableSorting: false,
                         minWidth: 120
                     },
                     {
@@ -53,26 +62,31 @@
                     {
                         name: app.localize('MembraneBatchNum'),
                         field: 'membraneBatchNum',
+                        enableSorting: false,
                         minWidth: 120
                     },
                     {
                         name: app.localize('MembraneMemberName'),
                         field: 'membraneMemberName',
+                        enableSorting: false,
                         minWidth: 120
                     },
                     {
                         name: app.localize('MembraneWorkInfo'),
                         field: 'membraneWorkInfo',
+                        enableSorting: false,
                         minWidth: 120
                     },
                     {
                         name: app.localize('MedicinalName'),
                         field: 'medicinalName',
+                        enableSorting: false,
                         minWidth: 120
                     },
                     {
                         name: app.localize('WorkType'),
                         field: 'workType',
+                        enableSorting: false,
                         cellTemplate:
                             '<div class=\"ui-grid-cell-contents\">' +
                             '  <span ng-show="row.entity.workType==0" class="label label-success">' + app.localize('DayWork') + '</span>' +
@@ -83,6 +97,7 @@
                     },
                     {
                         name: app.localize('Remark'),
+                        enableSorting: false,
                         field: 'remark',
                         minWidth: 120
                     }
@@ -109,15 +124,42 @@
             };
 
             vm.getschedulings = function () {
-                schedulingsService.getSchedulingList().success(function (result) {
+                vm.loading = true;
+                schedulingsService.getSchedulingList({
+                    skipCount: requestParams.skipCount,
+                    maxResultCount: requestParams.maxResultCount,
+                    sorting: requestParams.sorting,
+                    startDate: vm.dateRangeModel.startDate,
+                    endDate:vm.dateRangeModel.endDate
+                }).success(function (result) {
                     vm.schedulingsGridOptions.data = result.items;
                     console.log(result);
+                    
+                }).finally(function () {
+                    vm.loading = false;
                 });
             };
 
-            vm.createUser = function () {
-                schedulingsService.schedulingWork("JP2016111801",1).success(function () { vm.getschedulings(); });
+            vm.createschedulings = function () {
+                //schedulingsService.schedulingWork("JP2016111801", 1).success(function () { vm.getschedulings(); });
+
+                openCreateOrEditRoleModal();
             };
+
+            function openCreateOrEditRoleModal() {
+                var modalInstance = $modal.open({
+                    templateUrl: '~/App/common/views/schedulings/createOrEditModal.cshtml',
+                    controller: 'common.views.schedulings.createOrEditModal as vm',
+                    backdrop: 'static',
+                    resolve: {
+
+                    }
+                });
+
+                modalInstance.result.then(function (result) {
+                    vm.getschedulings();
+                });
+            }
 
             vm.getschedulings();
         }]);

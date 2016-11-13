@@ -1,0 +1,70 @@
+﻿@using jrt.jcgl.Authorization.Roles
+<div>
+    <form name="roleCreateOrEditForm" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>@L("CreateNewSchedulings")</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input class="form-control"
+                       type="text"
+                       name="BatchNum"
+                       ng-class="{'edited':vm.scheduling.batchNum}"
+                       ng-model="vm.scheduling.batchNum"
+                       required>
+                <label>@L("Schedulings.BatchNum")</label>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input class="form-control"
+                       type="text"
+                       name="ExtractWorkInfo"
+                       ng-class="{'edited':vm.scheduling.extractWorkInfo}"
+                       ng-model="vm.scheduling.extractWorkInfo">
+                <label>@L("Schedulings.ExtractWorkInfo")</label>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input class="form-control"
+                       type="text"
+                       name="MembraneWorkInfo"
+                       ng-class="{'edited':vm.scheduling.membraneWorkInfo}"
+                       ng-model="vm.scheduling.membraneWorkInfo">
+                <label>@L("Schedulings.MembraneWorkInfo")</label>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input class="form-control"
+                       type="text"
+                       name="MedicinalName"
+                       ng-class="{'edited':vm.scheduling.medicinalName}"
+                       ng-model="vm.scheduling.medicinalName">
+                <label>@L("Schedulings.MedicinalName")</label>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input class="form-control"
+                       type="text"
+                       name="Remark"
+                       ng-class="{'edited':vm.scheduling.remark}"
+                       ng-model="vm.scheduling.remark">
+                <label>@L("Schedulings.Remark")</label>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <select class="form-control" ng-model="vm.type_selcet"
+                        ng-options="opt.name for opt in vm.types track by opt.value"
+                        ui-options='{ iconBase: "fa", tickIcon: "fa fa-check" }'
+                        required></select>
+                @*<option value="0">
+                        提取工种
+                    </option>
+                    <option value="1">
+                        膜工种
+                    </option>*@
+                <label>@L("Schedulings.Type")</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
+            <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="roleCreateOrEditForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        </div>
+    </form>
+</div>

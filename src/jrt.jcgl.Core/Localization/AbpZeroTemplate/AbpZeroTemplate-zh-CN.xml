@@ -280,9 +280,19 @@
     <text name="LookingForMpaVersion" value="查找多页面应用版本号" />
     <text name="LookingForSpaVersion" value="查找单页面应用版本号" />
     <text name="ThisLanguageAlreadyExists" value="这种语言已经存在!" />
+    
+    
     <text name="Schedulings" value="预排班"/>
     <text name="Schedulings.Table" value="预排班表"/>
     <text name="SchedulingDate" value="日期"/>
+    <text name ="CreateNewSchedulings" value ="创建预排班"/>
+    <text name="Schedulings.BatchNum" value="批号"/>
+    <text name="Schedulings.ExtractWorkInfo" value="提取工作内容"/>
+    <text name="Schedulings.MembraneWorkInfo" value="膜工作内容"/>
+    <text name="Schedulings.MedicinalName" value="药品工作名称"/>
+    <text name="Schedulings.Remark" value="备注"/>
+    <text name="Schedulings.Type" value="排班类型"/>
+    
     <text name="ExtractBatchNum" value="提取对应批号"/>
     <text name="ExtractMemberName" value="生产人员（提取）"/>
     <text name="ExtractWorkInfo" value="提取工作内容"/>
@@ -302,5 +312,8 @@
     <text name="CustomHolidaysHeaderInfo" value="排班选择自定义上班日模式，在这里添加休息日"/>
     <text name="Holidays" value="休息日"/>
     <text name="CustomHolidayDeleteWarningMessage" value="确定要删除该休息日吗？"/>
+    <text name ="Enums.jrt.jcgl.Schedulings.SchedulingType.Normal" value ="正常休假"/>
+    <text name="Enums.jrt.jcgl.Schedulings.SchedulingType.Single" value="单日休假"/>
+    <text name="Enums.jrt.jcgl.Schedulings.SchedulingType.Custom" value="自定义休假"/>
   </texts>
 </localizationDictionary>

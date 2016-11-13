@@ -10,14 +10,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-6 text-right">
-            <button class="btn btn-default" ng-click="vm.exportToExcel()"><i class="fa fa-file-excel-o"></i> @L("ExportToExcel")</button>
-            <button class="btn btn-primary blue" ng-click="vm.createUser()"><i class="fa fa-plus"></i> @L("CreateNewUser")</button>
+        <div class="form">
+            <form class="horizontal-form">
+                <div class="row">
+                    <div class="col-xs-6 text-right">
+                        <button class="btn btn-default" ng-click="vm.exportToExcel()"><i class="fa fa-file-excel-o"></i> @L("ExportToExcel")</button>
+                        <button class="btn btn-primary blue" ng-click="vm.createschedulings()"><i class="fa fa-plus"></i> @L("CreateNewSchedulings")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="portlet-body">
+            <div busy-if="vm.loading">
+                <div ui-grid="vm.schedulingsGridOptions" ui-grid-pagination ui-grid-resize-columns dir=@(CultureHelper.IsRtl ? "rtl" : "")></div>
+            </div>
         </div>
     </div>
-    <div class="portlet-body">
-        <div busy-if="vm.loading">
-            <div ui-grid="vm.schedulingsGridOptions" ui-grid-pagination ui-grid-resize-columns dir=@(CultureHelper.IsRtl ? "rtl" : "")></div>
-        </div>
-    </div>
-</div>

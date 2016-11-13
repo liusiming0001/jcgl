@@ -29,16 +29,16 @@ namespace jrt.jcgl.Schedulings
         /// </summary>
         /// <param name="BatchNum"></param>
         /// <returns></returns>
-        public async Task SchedulingWork(string BatchNum, SchedulingType type)
+        public async Task SchedulingWork(string BatchNum, string ExtractWorkInfo, string MembraneWorkInfo, string MedicinalName, string Remark, SchedulingType type)
         {
             try
             {
 
                 switch (type)
                 {
-                    case SchedulingType.Normal: await SchedulingType1(BatchNum); break;
-                    case SchedulingType.Single: await SchedulingType2(BatchNum); break;
-                    case SchedulingType.Custom: await SchedulingType3(BatchNum); break;
+                    case SchedulingType.Normal: await SchedulingType1(BatchNum, ExtractWorkInfo, MembraneWorkInfo, MedicinalName, Remark); break;
+                    case SchedulingType.Single: await SchedulingType2(BatchNum, ExtractWorkInfo, MembraneWorkInfo, MedicinalName, Remark); break;
+                    case SchedulingType.Custom: await SchedulingType3(BatchNum, ExtractWorkInfo, MembraneWorkInfo, MedicinalName, Remark); break;
                     default: break;
                 }
 
@@ -48,6 +48,7 @@ namespace jrt.jcgl.Schedulings
                 throw e;
             }
         }
+        #region 获取上班人员
         /// <summary>
         /// 根据生产批号获取日期
         /// </summary>
@@ -63,10 +64,15 @@ namespace jrt.jcgl.Schedulings
                 month == 5 ||
                 month == 7 ||
                 month == 8 ||
-                month == 10 ||
-                month == 12) && day > 31)
+                month == 10) && day > 31)
             {
                 month++;
+                day = i;
+            }
+            if (month == 12 && day > 31)
+            {
+                month = 1;
+                year++;
                 day = i;
             }
             if ((month == 4 ||
@@ -144,9 +150,11 @@ namespace jrt.jcgl.Schedulings
 
             return list;
         }
-
+        #endregion
+        #region 休息日类型
         private bool isHolidayType1(DateTime day)
         {
+            ///API未更新数据源 ！
             string url = string.Format("http://www.easybots.cn/api/holiday.php?d={0}", day.ToString("yyyyMMdd"));
             WebClient wc = new WebClient();
             Encoding enc = Encoding.GetEncoding("UTF-8");
@@ -182,12 +190,14 @@ namespace jrt.jcgl.Schedulings
                 return false;
             return true;
         }
+        #endregion
+        #region 排版类型
         /// <summary>
         /// 正常休假
         /// </summary>
         /// <param name="BatchNum"></param>
         /// <returns></returns>
-        private async Task SchedulingType1(string BatchNum)
+        private async Task SchedulingType1(string BatchNum, string ExtractWorkInfo, string MembraneWorkInfo, string MedicinalName, string Remark)
         {
             var extract = await getExtract();
             var membrane = await getMembrane();
@@ -211,7 +221,11 @@ namespace jrt.jcgl.Schedulings
                                 MembraneBatchNum = count >= 2 ? BatchNum : null,
                                 WorkType = (WorkType)j,
                                 ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
-                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null
+                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
+                                ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
+                                MembraneWorkInfo = count >= 2 ? ExtractWorkInfo : null,
+                                MedicinalName = MedicinalName,
+                                Remark = Remark
                             });
                         else
                         {
@@ -233,7 +247,7 @@ namespace jrt.jcgl.Schedulings
         /// </summary>
         /// <param name="BatchNum"></param>
         /// <returns></returns>
-        private async Task SchedulingType2(string BatchNum)
+        private async Task SchedulingType2(string BatchNum, string ExtractWorkInfo, string MembraneWorkInfo, string MedicinalName, string Remark)
         {
             var extract = await getExtract();
             var membrane = await getMembrane();
@@ -257,7 +271,11 @@ namespace jrt.jcgl.Schedulings
                                 MembraneBatchNum = count >= 2 ? BatchNum : null,
                                 WorkType = (WorkType)j,
                                 ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
-                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null
+                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
+                                ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
+                                MembraneWorkInfo = count >= 2 ? ExtractWorkInfo : null,
+                                MedicinalName = MedicinalName,
+                                Remark = Remark
                             });
                         else
                         {
@@ -279,7 +297,7 @@ namespace jrt.jcgl.Schedulings
         /// </summary>
         /// <param name="BatchNum"></param>
         /// <returns></returns>
-        private async Task SchedulingType3(string BatchNum)
+        private async Task SchedulingType3(string BatchNum, string ExtractWorkInfo, string MembraneWorkInfo, string MedicinalName, string Remark)
         {
             var extract = await getExtract();
             var membrane = await getMembrane();
@@ -303,7 +321,11 @@ namespace jrt.jcgl.Schedulings
                                 MembraneBatchNum = count >= 2 ? BatchNum : null,
                                 WorkType = (WorkType)j,
                                 ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
-                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null
+                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
+                                ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
+                                MembraneWorkInfo = count >= 2 ? ExtractWorkInfo : null,
+                                MedicinalName = MedicinalName,
+                                Remark = Remark
                             });
                         else
                         {
@@ -320,6 +342,8 @@ namespace jrt.jcgl.Schedulings
             }
             #endregion
         }
+        #endregion
+
     }
 
     public class OrganizationMember

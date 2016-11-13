@@ -8,6 +8,6 @@ namespace jrt.jcgl.Schedulings
 {
     public interface ISchedulingManager
     {
-        Task SchedulingWork(string BatchNum, SchedulingType type);
+        Task SchedulingWork(string BatchNum, string ExtractWorkInfo, string MembraneWorkInfo, string MedicinalName, string Remark, SchedulingType type);
     }
 }
