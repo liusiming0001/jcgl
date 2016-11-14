@@ -120,14 +120,21 @@
 
             vm.getschedulings = function () {
                 vm.loading = true;
+                var startdatetemp = null;
+                var enddatetemp = null;
+                if (vm.startdate != null)
+                    startdatetemp = vm.startdate.toLocaleDateString();
+                if (vm.enddate != null)
+                    enddatetemp = vm.enddate.toLocaleDateString();
                 schedulingsService.getSchedulingList({
                     skipCount: requestParams.skipCount,
                     maxResultCount: requestParams.maxResultCount,
                     sorting: requestParams.sorting,
-                    startDate: vm.startdate,
-                    endDate: vm.enddate
+                    startDate: startdatetemp,
+                    endDate: enddatetemp
                 }).success(function (result) {
                     vm.schedulingsGridOptions.data = result.items;
+                    vm.schedulingsGridOptions.totalItems = result.totalCount;
                     console.log(result);
 
                 }).finally(function () {

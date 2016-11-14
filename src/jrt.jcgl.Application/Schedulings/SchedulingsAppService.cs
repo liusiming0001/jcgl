@@ -50,13 +50,11 @@ namespace jrt.jcgl.Schedulings
                 input.Type
                 );
         }
-
         public async Task<PagedResultOutput<SchedulingListDto>> GetSchedulingList(GetSchedulingWorkInput input)
         {
             try
             {
                 var query = from s in _schedulingRepository.GetAll()
-                                //where s.SchedulingDate >= input.StartDate && s.SchedulingDate < input.EndDate
                             orderby s.SchedulingDate
                             select new
                             {
@@ -66,7 +64,7 @@ namespace jrt.jcgl.Schedulings
                             };
 
                 query = query.WhereIf(input.StartDate.HasValue, q => q.s.SchedulingDate >= input.StartDate);
-                query = query.WhereIf(input.EndDate.HasValue, q => q.s.SchedulingDate < input.EndDate);
+                query = query.WhereIf(input.EndDate.HasValue, q => q.s.SchedulingDate <= input.EndDate);
 
                 var items = await query
                                 .PageBy(input)
@@ -139,8 +137,7 @@ namespace jrt.jcgl.Schedulings
                 List<SchedulingDayWorkDto> output = new List<SchedulingDayWorkDto>();
                 if (!input.WorkDate.HasValue)
                     return output;
-                var d = getRealTime(input.WorkDate.Value);
-                var schedulings = _schedulingRepository.GetAll().Where(s => s.SchedulingDate == d);
+                var schedulings = _schedulingRepository.GetAll().WhereIf(input.WorkDate.HasValue, s => s.SchedulingDate == input.WorkDate);
                 if (schedulings != null)
                 {
                     var items = await schedulings.ToListAsync();
@@ -182,47 +179,6 @@ namespace jrt.jcgl.Schedulings
             {
                 throw e;
             }
-        }
-        private DateTime getRealTime(DateTime linqday)
-        {
-            int year = linqday.Year;
-            int month = linqday.Month;
-            int day = linqday.Day + 1;
-            if ((month == 1 ||
-                month == 3 ||
-                month == 5 ||
-                month == 7 ||
-                month == 8 ||
-                month == 10) && day > 31)
-            {
-                month++;
-                day = 1;
-            }
-            if (month == 12 && day > 31)
-            {
-                month = 1;
-                year++;
-                day = 1;
-            }
-            if ((month == 4 ||
-                month == 6 ||
-                month == 9 ||
-                month == 11) && day > 30)
-            {
-                month++;
-                day = 1;
-            }
-            if (year % 4 == 0 && month == 2 && day > 29)
-            {
-                month++;
-                day = 1;
-            }
-            if (year % 4 != 0 && month == 2 && day > 28)
-            {
-                month++;
-                day = 1;
-            }
-            return new DateTime(year, month, day);
         }
         private async Task<List<User>> getOrganzationUsers(long oid)
         {

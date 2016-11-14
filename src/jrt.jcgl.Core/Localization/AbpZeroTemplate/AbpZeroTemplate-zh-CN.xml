@@ -318,5 +318,8 @@
     <text name="Day" value="早班"/>
     <text name="Middle" value="中班"/>
     <text name="Night" value="晚班"/>
+    
+    <text name="DateQuery" value="查询日期"/>
+    <text name="SchedulingsDay" value="工作日程"/>
   </texts>
 </localizationDictionary>

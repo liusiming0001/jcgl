@@ -10,6 +10,8 @@
                 App.initAjax();
             });
             vm.getschedulings = function () {
+                if (vm.date != null)
+                    vm.date=vm.date.toLocaleDateString();
                 console.log(vm.date);
                 schedulingsService.getSchedulingInfoFormDate({
                     workDate: vm.date 
