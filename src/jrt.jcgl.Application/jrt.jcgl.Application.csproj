@@ -212,7 +212,9 @@
     <Compile Include="Organizations\Dto\OrganizationUnitUserListDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedulings\Dto\CreateSchedulingWorkDto.cs" />
+    <Compile Include="Schedulings\Dto\GetSchedulingWorkInDateInput.cs" />
     <Compile Include="Schedulings\Dto\GetSchedulingWorkInput.cs" />
+    <Compile Include="Schedulings\Dto\SchedulingDayWorkDto.cs" />
     <Compile Include="Schedulings\Dto\SchedulingListDto.cs" />
     <Compile Include="Schedulings\Exporting\ISchedulingsListExcelExporter.cs" />
     <Compile Include="Schedulings\Exporting\SchedulingsListExcelExporter.cs" />

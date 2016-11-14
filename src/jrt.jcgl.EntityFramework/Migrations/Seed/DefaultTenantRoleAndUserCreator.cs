@@ -205,8 +205,14 @@ namespace jrt.jcgl.Migrations.Seed
                 _context.SaveChanges();
             }
             InsertCustomers(defaluttenants, extract, "提取一组一号");
+            InsertCustomers(defaluttenants, extract, "提取一组二号");
+            InsertCustomers(defaluttenants, extract, "提取一组三号");
             InsertCustomers(defaluttenants, extract, "提取二组一号");
+            InsertCustomers(defaluttenants, extract, "提取二组二号");
+            InsertCustomers(defaluttenants, extract, "提取二组三号");
             InsertCustomers(defaluttenants, extract, "提取三组一号");
+            InsertCustomers(defaluttenants, extract, "提取三组二号");
+            InsertCustomers(defaluttenants, extract, "提取三组三号");
             var membrane = _context.Roles.FirstOrDefault(r => r.TenantId == defaluttenants.Id && r.Name == StaticRoleNames.Tenants.Membrane);
             if (membrane == null)
             {
@@ -216,6 +222,12 @@ namespace jrt.jcgl.Migrations.Seed
             InsertCustomers(defaluttenants, membrane, "膜一组一号");
             InsertCustomers(defaluttenants, membrane, "膜二组一号");
             InsertCustomers(defaluttenants, membrane, "膜三组一号");
+            InsertCustomers(defaluttenants, membrane, "膜一组二号");
+            InsertCustomers(defaluttenants, membrane, "膜二组二号");
+            InsertCustomers(defaluttenants, membrane, "膜三组二号");
+            InsertCustomers(defaluttenants, membrane, "膜一组三号");
+            InsertCustomers(defaluttenants, membrane, "膜二组三号");
+            InsertCustomers(defaluttenants, membrane, "膜三组三号");
         }
 
         private void InsertCustomers(Tenant defaultTenant, Role userRoleForDefaultTenant, string customerName)

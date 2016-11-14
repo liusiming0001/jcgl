@@ -123,6 +123,14 @@ appModule.config([
             });
         }
 
+        if (abp.auth.hasPermission('Pages.Administration.SchedulingsDay')) {
+            $stateProvider.state('schedulingsdays', {
+                url: '/schedulingsdays',
+                templateUrl: '~/App/common/views/schedulingsdays/index.cshtml',
+                menu: 'Administration.SchedulingsDay'
+            });
+        }
+
         if (abp.auth.hasPermission('Pages.Administration.CustomHolidays')) {
             $stateProvider.state('customholidays', {
                 url: '/customholidays',

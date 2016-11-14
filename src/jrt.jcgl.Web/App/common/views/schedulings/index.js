@@ -125,15 +125,17 @@
                     maxResultCount: requestParams.maxResultCount,
                     sorting: requestParams.sorting,
                     startDate: vm.startdate,
-                    endDate:vm.enddate
+                    endDate: vm.enddate
                 }).success(function (result) {
                     vm.schedulingsGridOptions.data = result.items;
                     console.log(result);
-                    
+
                 }).finally(function () {
                     vm.loading = false;
                 });
-            };
+
+                schedulingsService.getSchedulingInfoFormDate({ workDate: "2016-11-14" }).success(function (result) { console.log(result); });
+            };  
 
             vm.createschedulings = function () {
                 //schedulingsService.schedulingWork("JP2016111801", 1).success(function () { vm.getschedulings(); });
@@ -156,8 +158,7 @@
                 });
             }
 
-            vm.exportToExcel = function ()
-            {
+            vm.exportToExcel = function () {
                 schedulingsService.exportToExcel({
                     skipCount: requestParams.skipCount,
                     maxResultCount: requestParams.maxResultCount,
@@ -168,9 +169,7 @@
                     app.downloadTempFile(result);
                 });
             }
-            vm.change = function () {
-                console.log(vm.date);
-            };
+
             vm.getschedulings();
         }]);
 })();

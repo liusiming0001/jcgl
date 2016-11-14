@@ -20,6 +20,7 @@ namespace jrt.jcgl.Migrations.Seed
             new DefaultLanguagesCreator(_context).Create();
             new DefaultTenantRoleAndUserCreator(_context).Create();
             new DefaultSettingsCreator(_context).Create();
+            new DefaultOrganzationUnitAndOrganzationCreator(_context).Creat();
 
             _context.SaveChanges();
         }

@@ -117,15 +117,15 @@ namespace jrt.jcgl.Schedulings
             List<OrganizationMember> list = new List<OrganizationMember>();
 
             var Extract = await _organizationRepository.GetAllListAsync(o => o.Type == OrganizationType.Extract && o.OrganizationUnit1.ParentId != null);
-
-            for (int i = 0; i < 3; i++)
-            {
-                list.Add(new OrganizationMember
+            if (Extract.Count >= 3)
+                for (int i = 0; i < 3; i++)
                 {
-                    Num = i,
-                    OrganizationUnitId = Extract[i].OrganizationUnitId
-                });
-            }
+                    list.Add(new OrganizationMember
+                    {
+                        Num = i,
+                        OrganizationUnitId = Extract[i].OrganizationUnitId
+                    });
+                }
 
             return list;
         }
@@ -138,15 +138,15 @@ namespace jrt.jcgl.Schedulings
             List<OrganizationMember> list = new List<OrganizationMember>();
 
             var Membrane = await _organizationRepository.GetAllListAsync(o => o.Type == OrganizationType.Membrane && o.OrganizationUnit1.ParentId != null);
-
-            for (int i = 0; i < 3; i++)
-            {
-                list.Add(new OrganizationMember
+            if (Membrane.Count >= 3)
+                for (int i = 0; i < 3; i++)
                 {
-                    Num = i,
-                    OrganizationUnitId = Membrane[i].OrganizationUnitId
-                });
-            }
+                    list.Add(new OrganizationMember
+                    {
+                        Num = i,
+                        OrganizationUnitId = Membrane[i].OrganizationUnitId
+                    });
+                }
 
             return list;
         }
@@ -211,28 +211,30 @@ namespace jrt.jcgl.Schedulings
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        var date = workdate;
-                        var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == date && s.WorkType == (WorkType)j);
-                        if (exscheduling == null)
-                            await _schedulingRepository.InsertAsync(new Scheduling
-                            {
-                                SchedulingDate = workdate,
-                                ExtractBatchNum = count <= 2 ? BatchNum : null,
-                                MembraneBatchNum = count >= 2 ? BatchNum : null,
-                                WorkType = (WorkType)j,
-                                ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
-                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
-                                ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
-                                MembraneWorkInfo = count >= 2 ? ExtractWorkInfo : null,
-                                MedicinalName = MedicinalName,
-                                Remark = Remark
-                            });
-                        else
-                        {
-                            exscheduling.ExtractBatchNum = count <= 2 ? BatchNum : null;
-                            exscheduling.ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
-                            await _schedulingRepository.UpdateAsync(exscheduling);
-                        }
+                        await InserScheduling(workdate,extract,membrane,count,j,BatchNum,ExtractWorkInfo,MembraneWorkInfo,MedicinalName,Remark);
+                        //var date = workdate;
+                        //var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == date && s.WorkType == (WorkType)j);
+                        //if (exscheduling == null)
+                        //    await _schedulingRepository.InsertAsync(new Scheduling
+                        //    {
+                        //        SchedulingDate = workdate,
+                        //        ExtractBatchNum = count <= 2 ? BatchNum : null,
+                        //        MembraneBatchNum = count >= 2 ? BatchNum : null,
+                        //        WorkType = (WorkType)j,
+                        //        ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
+                        //        MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
+                        //        ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
+                        //        MembraneWorkInfo = count >= 2 ? MembraneWorkInfo : null,
+                        //        MedicinalName = MedicinalName,
+                        //        Remark = Remark
+                        //    });
+                        //else
+                        //{
+                        //    exscheduling.ExtractBatchNum = count <= 2 ? BatchNum : null;
+                        //    exscheduling.ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
+                        //    ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null;
+                        //    await _schedulingRepository.UpdateAsync(exscheduling);
+                        //}
                     }
                     count++;
                 }
@@ -261,28 +263,30 @@ namespace jrt.jcgl.Schedulings
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        var date = workdate;
-                        var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == date && s.WorkType == (WorkType)j);
-                        if (exscheduling == null)
-                            await _schedulingRepository.InsertAsync(new Scheduling
-                            {
-                                SchedulingDate = workdate,
-                                ExtractBatchNum = count <= 2 ? BatchNum : null,
-                                MembraneBatchNum = count >= 2 ? BatchNum : null,
-                                WorkType = (WorkType)j,
-                                ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
-                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
-                                ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
-                                MembraneWorkInfo = count >= 2 ? ExtractWorkInfo : null,
-                                MedicinalName = MedicinalName,
-                                Remark = Remark
-                            });
-                        else
-                        {
-                            exscheduling.ExtractBatchNum = count <= 2 ? BatchNum : null;
-                            exscheduling.ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
-                            await _schedulingRepository.UpdateAsync(exscheduling);
-                        }
+                        await InserScheduling(workdate, extract, membrane, count, j, BatchNum, ExtractWorkInfo, MembraneWorkInfo, MedicinalName, Remark);
+                        //var date = workdate;
+                        //var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == date && s.WorkType == (WorkType)j);
+                        //if (exscheduling == null)
+                        //    await _schedulingRepository.InsertAsync(new Scheduling
+                        //    {
+                        //        SchedulingDate = workdate,
+                        //        ExtractBatchNum = count <= 2 ? BatchNum : null,
+                        //        MembraneBatchNum = count >= 2 ? BatchNum : null,
+                        //        WorkType = (WorkType)j,
+                        //        ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
+                        //        MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
+                        //        ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
+                        //        MembraneWorkInfo = count >= 2 ? MembraneWorkInfo : null,
+                        //        MedicinalName = MedicinalName,
+                        //        Remark = Remark
+                        //    });
+                        //else
+                        //{
+                        //    exscheduling.ExtractBatchNum = count <= 2 ? BatchNum : null;
+                        //    exscheduling.ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
+                        //    ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null;
+                        //    await _schedulingRepository.UpdateAsync(exscheduling);
+                        //}
                     }
                     count++;
                 }
@@ -311,28 +315,30 @@ namespace jrt.jcgl.Schedulings
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        var date = workdate;
-                        var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == date && s.WorkType == (WorkType)j);
-                        if (exscheduling == null)
-                            await _schedulingRepository.InsertAsync(new Scheduling
-                            {
-                                SchedulingDate = workdate,
-                                ExtractBatchNum = count <= 2 ? BatchNum : null,
-                                MembraneBatchNum = count >= 2 ? BatchNum : null,
-                                WorkType = (WorkType)j,
-                                ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
-                                MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
-                                ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
-                                MembraneWorkInfo = count >= 2 ? ExtractWorkInfo : null,
-                                MedicinalName = MedicinalName,
-                                Remark = Remark
-                            });
-                        else
-                        {
-                            exscheduling.ExtractBatchNum = count <= 2 ? BatchNum : null;
-                            exscheduling.ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
-                            await _schedulingRepository.UpdateAsync(exscheduling);
-                        }
+                        await InserScheduling(workdate, extract, membrane, count, j, BatchNum, ExtractWorkInfo, MembraneWorkInfo, MedicinalName, Remark);
+                        //var date = workdate;
+                        //var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == date && s.WorkType == (WorkType)j);
+                        //if (exscheduling == null)
+                        //    await _schedulingRepository.InsertAsync(new Scheduling
+                        //    {
+                        //        SchedulingDate = workdate,
+                        //        ExtractBatchNum = count <= 2 ? BatchNum : null,
+                        //        MembraneBatchNum = count >= 2 ? BatchNum : null,
+                        //        WorkType = (WorkType)j,
+                        //        ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
+                        //        MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
+                        //        ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
+                        //        MembraneWorkInfo = count >= 2 ? MembraneWorkInfo : null,
+                        //        MedicinalName = MedicinalName,
+                        //        Remark = Remark
+                        //    });
+                        //else
+                        //{
+                        //    exscheduling.ExtractBatchNum = count <= 2 ? BatchNum : null;
+                        //    exscheduling.ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
+                        //    ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null;
+                        //    await _schedulingRepository.UpdateAsync(exscheduling);
+                        //}
                     }
                     count++;
                 }
@@ -341,6 +347,35 @@ namespace jrt.jcgl.Schedulings
                     break;
             }
             #endregion
+        }
+
+        private async Task InserScheduling(DateTime workdate,
+            List<OrganizationMember> extract, List<OrganizationMember> membrane,
+            int count, int j,
+            string BatchNum, string ExtractWorkInfo, string MembraneWorkInfo, string MedicinalName, string Remark)
+        {
+            var exscheduling = await _schedulingRepository.FirstOrDefaultAsync(s => s.SchedulingDate == workdate && s.WorkType == (WorkType)j);
+            if (exscheduling == null)
+                await _schedulingRepository.InsertAsync(new Scheduling
+                {
+                    SchedulingDate = workdate,
+                    ExtractBatchNum = count <= 2 ? BatchNum : null,
+                    MembraneBatchNum = count >= 2 ? BatchNum : null,
+                    WorkType = (WorkType)j,
+                    ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : null,
+                    MembraneMemberId = count >= 2 ? (long?)membrane[DistributionMember(count - 2, j)].OrganizationUnitId : null,
+                    ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null,
+                    MembraneWorkInfo = count >= 2 ? MembraneWorkInfo : null,
+                    MedicinalName = MedicinalName,
+                    Remark = Remark
+                });
+            else
+            {
+                exscheduling.ExtractBatchNum = count <= 2 ? BatchNum : null;
+                exscheduling.ExtractMemberId = count <= 2 ? (long?)extract[DistributionMember(count, j)].OrganizationUnitId : exscheduling.ExtractMemberId;
+                exscheduling.ExtractWorkInfo = count <= 2 ? ExtractWorkInfo : null;
+                await _schedulingRepository.UpdateAsync(exscheduling);
+            }
         }
         #endregion
 

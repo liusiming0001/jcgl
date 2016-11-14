@@ -98,6 +98,13 @@ namespace jrt.jcgl.Web.App.Startup
                         requiredPermissionName: AppPermissions.Pages_Administration_Schedulings
                         )
                     ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.SchedulingsDay,
+                        L("SchedulingsDay"),
+                        url: "schedulingsdays",
+                        icon: "icon-note",
+                        requiredPermissionName: AppPermissions.Pages_Administration_SchedulingsDay
+                        )
+                    ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.CustomHolidays,
                         L("CustomHolidays"),
                         url: "customholidays",

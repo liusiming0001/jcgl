@@ -60,6 +60,7 @@
         public const string Pages_Administration_Host_Settings = "Pages.Administration.Host.Settings";
 
         public const string Pages_Administration_Schedulings = "Pages.Administration.Schedulings";
+        public const string Pages_Administration_SchedulingsDay = "Pages.Administration.SchedulingsDay";
 
         public const string Pages_Administration_CustomHolidays = "Pages.Administration.CustomHolidays";
         public const string Pages_Administration_CustomHolidays_Create = "Pages.Administration.CustomHolidays.Create";

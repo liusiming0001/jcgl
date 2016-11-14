@@ -1,0 +1,43 @@
+﻿@using jrt.jcgl.Localization
+<div ng-controller="common.views.schedulingsdays.index as vm">
+    <div class="portlet-body">
+        <div class="form">
+            <form class="horizontal-form">
+                <div class="form-body" style="padding-left:0px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">@L("DateRange")</label>
+                                <input type="date" id="date" name="input" ng-model="vm.date" ng-change="vm.getschedulings()"
+                                       placeholder="yyyy-MM-dd" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table">
+                    @*<thead>
+                            <tr>
+                                <th>@L("UserName")</th>
+                                <th>@L("FullName")</th>
+                                <th>@L("EmailAddress")</th>
+                                <th>@L("IsActive")</th>
+                                <th>@L("IsActive")</th>
+                            </tr>
+                        </thead>*@
+                    <tbody>
+                        <tr ng-repeat="work in vm.daywork">
+                            <td>{{work.organzationName}}</td>
+                            <td>{{work.memberOneName}}</td>
+                            <td>{{work.memberTwoName}}</td>
+                            <td>{{work.memberThreeName }}</td>
+                            <td>
+                                <span ng-show="work.workType==0" class="label label-success">@L("DayWork")</span>
+                                <span ng-show="work.workType==1" class="label label-warning">@L("MiddleWork")</span>
+                                <span ng-show="work.workType==2" class="label label-default">@L("NightWork")</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>

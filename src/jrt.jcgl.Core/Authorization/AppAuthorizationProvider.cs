@@ -66,6 +66,8 @@ namespace jrt.jcgl.Authorization
             administration.CreateChildPermission(AppPermissions.Pages_Administration_Host_Settings, L("Settings"), multiTenancySides: MultiTenancySides.Host);
 
             var scheduling = administration.CreateChildPermission(AppPermissions.Pages_Administration_Schedulings, L("Schedulings"));
+       
+            var schedulingday = administration.CreateChildPermission(AppPermissions.Pages_Administration_SchedulingsDay, L("SchedulingsDay"));
 
             var customHolidays = administration.CreateChildPermission(AppPermissions.Pages_Administration_CustomHolidays, L("CustomHolidays"));
             customHolidays.CreateChildPermission(AppPermissions.Pages_Administration_CustomHolidays_Create, L("CustomHolidays.Create"));

@@ -21,5 +21,7 @@ namespace jrt.jcgl.Schedulings
         ListResultDto<NameValueDto> GetSchedulingTypes();
 
         Task<FileDto> ExportToExcel(GetSchedulingWorkInput input);
+
+        Task<List<SchedulingDayWorkDto>> GetSchedulingInfoFormDate(GetSchedulingWorkInDateInput input);
     }
 }

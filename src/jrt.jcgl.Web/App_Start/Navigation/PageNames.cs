@@ -13,6 +13,7 @@ namespace jrt.jcgl.Web.Navigation
                 public const string OrganizationUnits = "Administration.OrganizationUnits";
                 public const string Languages = "Administration.Languages";
                 public const string Schedulings = "Administration.Schedulings";
+                public const string SchedulingsDay = "Administration.SchedulingsDay";
                 public const string CustomHolidays = "Administration.CustomHolidays";
             }
 

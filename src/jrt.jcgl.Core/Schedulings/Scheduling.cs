@@ -18,7 +18,7 @@ namespace jrt.jcgl.Schedulings
         /// 提取组
         /// </summary>
         public virtual long? ExtractMemberId{get;set;}
-        public OrganizationUnit ExtractMember { get; set; }
+        public virtual OrganizationUnit ExtractMember { get; set; }
         /// <summary>
         /// 提取工作内容
         /// </summary>
@@ -31,7 +31,7 @@ namespace jrt.jcgl.Schedulings
         /// 膜组
         /// </summary>
         public virtual long? MembraneMemberId { get; set; }
-        public OrganizationUnit MembraneMember { get; set; }
+        public virtual OrganizationUnit MembraneMember { get; set; }
         /// <summary>
         /// 膜工作内容
         /// </summary>
