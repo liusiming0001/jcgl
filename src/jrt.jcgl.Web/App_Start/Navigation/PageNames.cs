@@ -12,11 +12,26 @@ namespace jrt.jcgl.Web.Navigation
                 public const string AuditLogs = "Administration.AuditLogs";
                 public const string OrganizationUnits = "Administration.OrganizationUnits";
                 public const string Languages = "Administration.Languages";
-                public const string Schedulings = "Administration.Schedulings";
-                public const string SchedulingsDay = "Administration.SchedulingsDay";
-                public const string CustomHolidays = "Administration.CustomHolidays";
-            }
 
+                //public const string ProductionplanningAndSchedulings = "Administration.ProductionplanningAndSchedulings";
+
+            }
+            public static class ProductionManager
+            {
+                public const string ProductionManagers = "ProductionManagers";
+                public const string ProductionplanningAndSchedulings = "ProductionManagers.ProductionplanningAndSchedulings";                
+                public const string MakingProductions = "ProductionManagers.MakingProductions";
+                public const string AuditProductions = "ProductionManagers.AuditProductions";
+                public const string MaterielLogs = "ProductionManagers.MaterielLogs";
+                public const string ExecuteProductions = "ProductionManagers.ExecuteProductions";
+                public const string MaterielInfoManagers = "ProductionManagers.MaterielInfoManagers";
+                public const string RawMaterialInfoManagers = "RawMaterialInfoManagers";
+                public const string GetBackMaterielInfoManagers = "ProductionManagers.GetBackMaterielInfoManagers";
+                public const string SchedulingsManagers = "ProductionManagers.SchedulingsManagers";
+                public const string Schedulings = "ProductionManagers.Schedulings";
+                public const string SchedulingsDay = "ProductionManagers.SchedulingsDay";
+                public const string CustomHolidays = "ProductionManagers.CustomHolidays";
+            }
             public static class Host
             {
                 public const string Tenants = "Tenants";

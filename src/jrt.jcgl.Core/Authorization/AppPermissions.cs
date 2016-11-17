@@ -9,7 +9,7 @@
         //COMMON PERMISSIONS (FOR BOTH OF TENANTS AND HOST)
 
         public const string Pages = "Pages";
-        
+
         public const string Pages_Administration = "Pages.Administration";
 
         public const string Pages_Administration_Roles = "Pages.Administration.Roles";
@@ -35,14 +35,14 @@
         public const string Pages_Administration_OrganizationUnits = "Pages.Administration.OrganizationUnits";
         public const string Pages_Administration_OrganizationUnits_ManageOrganizationTree = "Pages.Administration.OrganizationUnits.ManageOrganizationTree";
         public const string Pages_Administration_OrganizationUnits_ManageMembers = "Pages.Administration.OrganizationUnits.ManageMembers";
-               
+
 
         //TENANT-SPECIFIC PERMISSIONS
 
         public const string Pages_Tenant_Dashboard = "Pages.Tenant.Dashboard";
 
         public const string Pages_Administration_Tenant_Settings = "Pages.Administration.Tenant.Settings";
-        
+
         //HOST-SPECIFIC PERMISSIONS
 
         public const string Pages_Editions = "Pages.Editions";
@@ -59,11 +59,63 @@
 
         public const string Pages_Administration_Host_Settings = "Pages.Administration.Host.Settings";
 
-        public const string Pages_Administration_Schedulings = "Pages.Administration.Schedulings";
-        public const string Pages_Administration_SchedulingsDay = "Pages.Administration.SchedulingsDay";
 
-        public const string Pages_Administration_CustomHolidays = "Pages.Administration.CustomHolidays";
-        public const string Pages_Administration_CustomHolidays_Create = "Pages.Administration.CustomHolidays.Create";
-        public const string Pages_Administration_CustomHolidays_Delete = "Pages.Administration.CustomHolidays.Delete";
+        /// <summary>
+        /// 排班管理权限
+        /// </summary>
+        public const string Pages_ProductionManagers_SchedulingsManagers = "Pages.ProductionManagers.SchedulingsManagers";
+        public const string Pages_ProductionManagers_Schedulings = "Pages.ProductionManagers.Schedulings";
+        public const string Pages_ProductionManagers_Schedulings_Create = "Pages.ProductionManagers.Schedulings.Create";
+        public const string Pages_ProductionManagers_SchedulingsDay = "Pages.ProductionManagers.SchedulingsDay";
+        /// <summary>
+        /// 自定义假期管理
+        /// </summary>
+        public const string Pages_ProductionManagers_CustomHolidays = "Pages.ProductionManagers.CustomHolidays";
+        public const string Pages_ProductionManagers_CustomHolidays_Create = "Pages.ProductionManagers.CustomHolidays.Create";
+        public const string Pages_ProductionManagers_CustomHolidays_Delete = "Pages.ProductionManagers.CustomHolidays.Delete";
+        /// <summary>
+        /// 根目录权限
+        /// </summary>
+        public const string Pages_ProductionManagers = "Pages.ProductionManagers ";
+        public const string Pages_ProductionManagers_ProductionplanningAndSchedulings = "Pages.ProductionManagers.ProductionplanningAndSchedulings";
+        public const string Pages_ProductionManagers_MaterielInfoManagers = "Pages.ProductionManagers.MaterielInfoManagers";
+        /// <summary>
+        /// 制定生产计划权限
+        /// </summary>
+        public const string Pages_ProductionManagers_MakingProductions = "Pages.ProductionManagers.MakingProductions";
+        public const string Pages_ProductionManagers_MakingProductions_Create = "Pages.ProductionManagers.MakingProductions.Create";
+        public const string Pages_ProductionManagers_MakingProductions_Delete = "Pages.ProductionManagers.MakingProductions.Delete";
+        public const string Pages_ProductionManagers_MakingProductions_Edit = "Pages.ProductionManagers.MakingProductions.Edit";
+        /// <summary>
+        /// 审核生产计划权限
+        /// </summary>
+        public const string Pages_ProductionManagers_AuditProductions = "Pages.ProductionManagers.AuditProductions";
+        public const string Pages_ProductionManagers_AuditProductions_Edit = "Pages.ProductionManagers.AuditProductions.Edit";
+        /// <summary>
+        /// 物料领取记录权限
+        /// </summary>
+        public const string Pages_ProductionManagers_MaterielLogs = "Pages.ProductionManagers.MaterielLogs";
+        /// <summary>
+        /// 生产计划执行权限
+        /// </summary>
+        public const string Pages_ProductionManagers_ExecuteProductions = "Pages.ProductionManagers.ExecuteProductions";
+        public const string Pages_ProductionManagers_ExecuteProductions_Create = "Pages.ProductionManagers.ExecuteProductions.Create";
+        public const string Pages_ProductionManagers_ExecuteProductions_Delete = "Pages.ProductionManagers.ExecuteProductions.Delete";
+        public const string Pages_ProductionManagers_ExecuteProductions_Edit = "Pages.ProductionManagers.ExecuteProductions.Edit";
+        /// <summary>
+        /// 原料药信息管理权限
+        /// </summary>
+        public const string Pages_ProductionManagers_RawMaterialInfoManagers = "Pages.ProductionManagers.RawMaterialInfoManagers";
+        public const string Pages_ProductionManagers_RawMaterialInfoManagers_Create = "Pages.ProductionManagers.RawMaterialInfoManagers.Create";
+        public const string Pages_ProductionManagers_RawMaterialInfoManagers_Delete = "Pages.ProductionManagers.RawMaterialInfoManagers.Delete";
+        public const string Pages_ProductionManagers_RawMaterialInfoManagers_Edit = "Pages.ProductionManagers.RawMaterialInfoManagers.Edit";
+        /// <summary>
+        /// 领回物料管理权限
+        /// </summary>
+        public const string Pages_ProductionManagers_GetBackMaterielInfoManagers = "Pages.ProductionManagers.GetBackMaterielInfoManagers";
+        public const string Pages_ProductionManagers_GetBackMaterielInfoManagers_Create = "Pages.ProductionManagers.GetBackMaterielInfoManagers.Create";
+        public const string Pages_ProductionManagers_GetBackMaterielInfoManagers_Delete = "Pages.ProductionManagers.GetBackMaterielInfoManagers.Delete";
+        public const string Pages_ProductionManagers_GetBackMaterielInfoManagers_Edit = "Pages.ProductionManagers.GetBackMaterielInfoManages.Edit";
+
     }
 }

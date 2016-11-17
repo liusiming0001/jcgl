@@ -115,27 +115,27 @@ appModule.config([
             });
         }
 
-        if (abp.auth.hasPermission('Pages.Administration.Schedulings')) {
+        if (abp.auth.hasPermission('Pages.ProductionManagers.Schedulings')) {
             $stateProvider.state('schedulings', {
                 url: '/schedulings',
                 templateUrl: '~/App/common/views/schedulings/index.cshtml',
-                menu: 'Administration.Schedulings'
+                menu: 'ProductionManagers.Schedulings'
             });
         }
 
-        if (abp.auth.hasPermission('Pages.Administration.SchedulingsDay')) {
+        if (abp.auth.hasPermission('Pages.ProductionManagers.SchedulingsDay')) {
             $stateProvider.state('schedulingsdays', {
                 url: '/schedulingsdays',
                 templateUrl: '~/App/common/views/schedulingsdays/index.cshtml',
-                menu: 'Administration.SchedulingsDay'
+                menu: 'ProductionManagers.SchedulingsDay'
             });
         }
 
-        if (abp.auth.hasPermission('Pages.Administration.CustomHolidays')) {
+        if (abp.auth.hasPermission('Pages.ProductionManagers.CustomHolidays')) {
             $stateProvider.state('customholidays', {
                 url: '/customholidays',
                 templateUrl: '~/App/common/views/customholidays/index.cshtml',
-                menu: 'Administration.CustomHolidays'
+                menu: 'ProductionManagers.CustomHolidays'
             });
         }
         //HOST routes

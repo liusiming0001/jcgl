@@ -38,6 +38,89 @@ namespace jrt.jcgl.Web.App.Startup
                     requiredPermissionName: AppPermissions.Pages_Tenant_Dashboard
                     )
                 ).AddItem(new MenuItemDefinition(
+                    PageNames.App.ProductionManager.ProductionManagers,
+                    L("ProductionManagers"),
+                    icon: "icon-plus"
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.ProductionManager.ProductionplanningAndSchedulings,
+                        L("ProductionplanningAndSchedulings"),
+                        icon: "icon-plus"
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.MakingProductions,
+                            L("MakingProductions"),
+                            url: "makingproductions",
+                            icon: "icon-plus",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_MakingProductions
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.AuditProductions,
+                            L("AuditProductions"),
+                            url: "auditproductions",
+                            icon: "icon-plus",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_AuditProductions
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.MaterielLogs,
+                            L("MaterielLogs"),
+                            url: "materiellogs",
+                            icon: "icon-plus",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_MaterielLogs
+                            )
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.ProductionManager.ExecuteProductions,
+                        L("ExecuteProductions"),
+                        url: "executeproductions",
+                        icon: "icon-plus",
+                        requiredPermissionName: AppPermissions.Pages_ProductionManagers_ExecuteProductions
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.ProductionManager.MaterielInfoManagers,
+                        L("MaterielInfoManagers"),
+                        icon: "icon-plus"
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.RawMaterialInfoManagers,
+                            L("RawMaterialInfoManagers"),
+                            url: "rawmaterialinfomanagers",
+                            icon: "icon-plus",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_RawMaterialInfoManagers
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.GetBackMaterielInfoManagers,
+                            L("GetBackMaterielInfoManagers"),
+                            url: "getbackmaterielinfomanagers",
+                            icon: "icon-plus",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_GetBackMaterielInfoManagers
+                            )
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.ProductionManager.SchedulingsManagers,
+                        L("SchedulingsManagers"),
+                        icon: "icon-plus"
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.Schedulings,
+                            L("Schedulings"),
+                            url: "schedulings",
+                            icon: "icon-note",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_Schedulings
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.SchedulingsDay,
+                            L("SchedulingsDay"),
+                            url: "schedulingsdays",
+                            icon: "icon-note",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_SchedulingsDay
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.CustomHolidays,
+                            L("CustomHolidays"),
+                            url: "customholidays",
+                            icon: "icon-bag",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_CustomHolidays
+                            )
+                        )
+                    )
+                ).AddItem(new MenuItemDefinition(
                     PageNames.App.Common.Administration,
                     L("Administration"),
                     icon: "icon-wrench"
@@ -89,27 +172,6 @@ namespace jrt.jcgl.Web.App.Startup
                         url: "tenant.settings",
                         icon: "icon-settings",
                         requiredPermissionName: AppPermissions.Pages_Administration_Tenant_Settings
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.Schedulings,
-                        L("Schedulings"),
-                        url: "schedulings",
-                        icon: "icon-note",
-                        requiredPermissionName: AppPermissions.Pages_Administration_Schedulings
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.SchedulingsDay,
-                        L("SchedulingsDay"),
-                        url: "schedulingsdays",
-                        icon: "icon-note",
-                        requiredPermissionName: AppPermissions.Pages_Administration_SchedulingsDay
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.App.Common.CustomHolidays,
-                        L("CustomHolidays"),
-                        url: "customholidays",
-                        icon: "icon-bag",
-                        requiredPermissionName: AppPermissions.Pages_Administration_CustomHolidays
                         )
                     )
             );

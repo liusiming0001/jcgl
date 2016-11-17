@@ -1,9 +1,11 @@
 ﻿using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Abp.Organizations;
+using jrt.jcgl.Authorization;
 using jrt.jcgl.Authorization.Users;
 using jrt.jcgl.Dto;
 using jrt.jcgl.Organizations;
@@ -19,6 +21,7 @@ using System.Threading.Tasks;
 
 namespace jrt.jcgl.Schedulings
 {
+    [AbpAuthorize(AppPermissions.Pages_ProductionManagers_Schedulings)]
     public class SchedulingsAppService : AbpZeroTemplateAppServiceBase, ISchedulingsAppService
     {
         private readonly ISchedulingManager _schedulingManager;
@@ -38,7 +41,7 @@ namespace jrt.jcgl.Schedulings
             this._userOrganizationUnitRepository = _userOrganizationUnitRepository;
             this._organizationUnitRepository = _organizationUnitRepository;
         }
-
+        [AbpAuthorize(AppPermissions.Pages_ProductionManagers_Schedulings_Create)]
         public async Task SchedulingWork(CreateSchedulingWorkDto input)
         {
             await _schedulingManager.SchedulingWork(

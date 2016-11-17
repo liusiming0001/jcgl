@@ -18,12 +18,12 @@ namespace jrt.jcgl.Authorization
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
             var administration = pages.CreateChildPermission(AppPermissions.Pages_Administration, L("Administration"));
-            
+
             var roles = administration.CreateChildPermission(AppPermissions.Pages_Administration_Roles, L("Roles"));
             roles.CreateChildPermission(AppPermissions.Pages_Administration_Roles_Create, L("CreatingNewRole"));
             roles.CreateChildPermission(AppPermissions.Pages_Administration_Roles_Edit, L("EditingRole"));
             roles.CreateChildPermission(AppPermissions.Pages_Administration_Roles_Delete, L("DeletingRole"));
-            
+
             var users = administration.CreateChildPermission(AppPermissions.Pages_Administration_Users, L("Users"));
             users.CreateChildPermission(AppPermissions.Pages_Administration_Users_Create, L("CreatingNewUser"));
             users.CreateChildPermission(AppPermissions.Pages_Administration_Users_Edit, L("EditingUser"));
@@ -65,13 +65,45 @@ namespace jrt.jcgl.Authorization
 
             administration.CreateChildPermission(AppPermissions.Pages_Administration_Host_Settings, L("Settings"), multiTenancySides: MultiTenancySides.Host);
 
-            var scheduling = administration.CreateChildPermission(AppPermissions.Pages_Administration_Schedulings, L("Schedulings"));
-       
-            var schedulingday = administration.CreateChildPermission(AppPermissions.Pages_Administration_SchedulingsDay, L("SchedulingsDay"));
-
-            var customHolidays = administration.CreateChildPermission(AppPermissions.Pages_Administration_CustomHolidays, L("CustomHolidays"));
-            customHolidays.CreateChildPermission(AppPermissions.Pages_Administration_CustomHolidays_Create, L("CustomHolidays.Create"));
-            customHolidays.CreateChildPermission(AppPermissions.Pages_Administration_CustomHolidays_Delete, L("CustomHolidays.Delete"));
+            //生产计划根目录
+            var productionmanagers = pages.CreateChildPermission(AppPermissions.Pages_ProductionManagers, L("ProductionManagers"));
+            var productionplanningandschedulings = productionmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_ProductionplanningAndSchedulings, L("ProductionplanningAndSchedulings"));
+            var materielinfomanager = productionmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MaterielInfoManagers, L("MaterielInfoManagers"));
+            var schedulingsmanagers = productionmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_SchedulingsManagers, L("SchedulingsManagers"));
+            //制定生产计划
+            var makingproduction = productionplanningandschedulings.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions, L("MakingProductions"));
+            makingproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Create, L("CreateNewMakingProductions"));
+            makingproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Delete, L("DeletingMakingProductions"));
+            makingproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Edit, L("EditingMakingProductions"));
+            //审核生产计划
+            var auditproduction = productionplanningandschedulings.CreateChildPermission(AppPermissions.Pages_ProductionManagers_AuditProductions, L("AuditProductions"));
+            auditproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_AuditProductions_Edit, L("EditingAuditProductions"));
+            //物料领取记录
+            var materiellog = productionplanningandschedulings.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MaterielLogs, L("MaterielLogs"));
+            //生产计划执行
+            var executeproduction = productionmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_ExecuteProductions, L("ExecuteProductions"));
+            executeproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_ExecuteProductions_Create, L("CreateNewExecuteProductions"));
+            executeproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_ExecuteProductions_Delete, L("DeletingExecuteProductions"));
+            executeproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_ExecuteProductions_Edit, L("EditingExecuteProductions"));
+            //物料信息
+            var rawmaterialinfomanager = materielinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_RawMaterialInfoManagers,L("RawMaterialInfoManagers"));
+            rawmaterialinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_RawMaterialInfoManagers_Create, L("CreateNewRawMaterialInfoManagers"));
+            rawmaterialinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_RawMaterialInfoManagers_Delete, L("DeletingRawMaterialInfoManagers"));
+            rawmaterialinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_RawMaterialInfoManagers_Edit, L("EditingRawMaterialInfoManagers"));
+            //领回物料
+            var getbackmaterielinfomanager = materielinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_GetBackMaterielInfoManagers, L("GetBackMaterielInfoManagers"));
+            getbackmaterielinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_GetBackMaterielInfoManagers_Create, L("CreateNewGetBackMaterielInfoManagers"));
+            getbackmaterielinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_GetBackMaterielInfoManagers_Delete, L("DeletingGetBackMaterielInfoManagers"));
+            getbackmaterielinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_GetBackMaterielInfoManagers_Edit, L("EditingGetBackMaterielInfoManagers"));
+            //排班
+            var scheduling = schedulingsmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_Schedulings, L("Schedulings"));
+            scheduling.CreateChildPermission(AppPermissions.Pages_ProductionManagers_Schedulings_Create, L("CreateNewSchedulings"));
+            //排班日程
+            var schedulingday = schedulingsmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_SchedulingsDay, L("SchedulingsDay"));
+            //自定义假期
+            var customHolidays = schedulingsmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_CustomHolidays, L("CustomHolidays"));
+            customHolidays.CreateChildPermission(AppPermissions.Pages_ProductionManagers_CustomHolidays_Create, L("CustomHolidays.Create"));
+            customHolidays.CreateChildPermission(AppPermissions.Pages_ProductionManagers_CustomHolidays_Delete, L("CustomHolidays.Delete"));
         }
 
         private static ILocalizableString L(string name)

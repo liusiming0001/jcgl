@@ -318,8 +318,32 @@
     <text name="Day" value="早班"/>
     <text name="Middle" value="中班"/>
     <text name="Night" value="晚班"/>
-    
+
     <text name="DateQuery" value="查询日期"/>
     <text name="SchedulingsDay" value="工作日程"/>
+
+    <text name="ProductionplanningAndSchedulings" value="生产计划及调度"/>
+    <text name="ProductionManagers" value="生产管理"/>
+    <text name="MakingProductions" value="制定生产计划"/>
+    <text name="CreateNewMakingProductions" value="创建"/>
+    <text name="DeletingMakingProductions" value="删除"/>
+    <text name="EditingMakingProductions" value="修改"/>
+    <text name="AuditProductions" value="审核生产计划"/>
+    <text name="EditingAuditProductions" value="审核"/>
+    <text name="MaterielLogs" value="物料领取日志"/>
+    <text name="ExecuteProductions" value="生产计划执行管理"/>
+    <text name="CreateNewExecuteProductions" value="创建"/>
+    <text name="DeletingExecuteProductions" value="删除"/>
+    <text name="EditingExecuteProductions" value="修改"/>
+    <text name="MaterielInfoManagers" value="物料信息管理"/>
+    <text name="RawMaterialInfoManagers" value="原料信息管理"/>
+    <text name="CreateNewRawMaterialInfoManagers" value="创建"/>
+    <text name="DeletingRawMaterialInfoManagers" value="删除"/>
+    <text name="EditingRawMaterialInfoManagers" value="修改"/>
+    <text name="GetBackMaterielInfoManagers" value="领回物料信息管理"/>
+    <text name="CreateNewGetBackMaterielInfoManagers" value="创建"/>
+    <text name="DeletingGetBackMaterielInfoManagers" value="删除"/>
+    <text name="EditingGetBackMaterielInfoManagers" value="修改"/>
+    <text name="SchedulingsManagers" value="排班管理"/>
   </texts>
 </localizationDictionary>
