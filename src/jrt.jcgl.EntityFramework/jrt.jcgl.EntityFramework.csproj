@@ -257,6 +257,22 @@
     <Compile Include="Migrations\201611091350534_Add_CustomHoliday_Table.Designer.cs">
       <DependentUpon>201611091350534_Add_CustomHoliday_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611190952261_Add_Stocks_Productions_RawMaterial_Tables.cs" />
+    <Compile Include="Migrations\201611190952261_Add_Stocks_Productions_RawMaterial_Tables.Designer.cs">
+      <DependentUpon>201611190952261_Add_Stocks_Productions_RawMaterial_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611191117337_Alert_Stocks_Productions_RawMaterial_ForeignKey.cs" />
+    <Compile Include="Migrations\201611191117337_Alert_Stocks_Productions_RawMaterial_ForeignKey.Designer.cs">
+      <DependentUpon>201611191117337_Alert_Stocks_Productions_RawMaterial_ForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611191222061_Alert_ProductionPlan_StartDate.cs" />
+    <Compile Include="Migrations\201611191222061_Alert_ProductionPlan_StartDate.Designer.cs">
+      <DependentUpon>201611191222061_Alert_ProductionPlan_StartDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.cs" />
+    <Compile Include="Migrations\201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.Designer.cs">
+      <DependentUpon>201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="AbpZeroTemplateDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -382,6 +398,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611091350534_Add_CustomHoliday_Table.resx">
       <DependentUpon>201611091350534_Add_CustomHoliday_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611190952261_Add_Stocks_Productions_RawMaterial_Tables.resx">
+      <DependentUpon>201611190952261_Add_Stocks_Productions_RawMaterial_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611191117337_Alert_Stocks_Productions_RawMaterial_ForeignKey.resx">
+      <DependentUpon>201611191117337_Alert_Stocks_Productions_RawMaterial_ForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611191222061_Alert_ProductionPlan_StartDate.resx">
+      <DependentUpon>201611191222061_Alert_ProductionPlan_StartDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.resx">
+      <DependentUpon>201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace jrt.jcgl.Organizations
+namespace jrt.jcgl.ProductionPlans
 {
-    public enum OrganizationType
+    public enum AuditType
     {
-        Extract,
-        Membrane,
-        ProdutionLine
+        Agree,
+        Disagree
     }
 }

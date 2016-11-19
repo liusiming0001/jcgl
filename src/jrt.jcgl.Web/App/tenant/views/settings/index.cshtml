@@ -163,6 +163,20 @@
                     </div>
                 </tab>
 
+                <tab heading="@L("ProductionSetting")">
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input type="number"
+                               name="ProductionCycle"
+                               class="form-control"
+                               ng-class="{'edited':vm.settings.productionSetting.productionCycle}"
+                               ng-model="vm.settings.productionSetting.productionCycle"
+                               maxlength="5">
+                        <label>@L("ProductionSetting.ProductionCycle")</label>
+                        <span class="help-block">@L("ProductionCycle_Hint")</span>
+                    </div>
+                    <div></div>
+                </tab>
+
             </tabset>
         </div>
     </div>

@@ -4,16 +4,19 @@
 // Purpose: Definition of Class StockLog
 
 using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
+using jrt.jcgl.Authorization.Users;
 using System;
 
 namespace jrt.jcgl.Stocks
 {
-    public class StockLog : Entity<long>
+    public class StockLog : FullAuditedEntity<long>
     {
-        private int stockId { get; set; }
-        private decimal quality { get; set; }
-        private int handleUserId { get; set; }
-        private DateTime handleTime { get; set; }
-
+        public virtual int StockId { get; set; }
+        public decimal Quality { get; set; }
+        public virtual long? HandleUserId { get; set; }
+        public DateTime HandleTime { get; set; }
+        public virtual Stock Stock { get; set; }
+        public virtual User HandleUser { get; set; }
     }
 }

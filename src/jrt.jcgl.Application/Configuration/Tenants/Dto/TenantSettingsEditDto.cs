@@ -17,6 +17,8 @@ namespace jrt.jcgl.Configuration.Tenants.Dto
         public EmailSettingsEditDto Email { get; set; }
 
         public LdapSettingsEditDto Ldap { get; set; }
+        [Required]
+        public ProductionSettingEditDto ProductionSetting { get; set; }
 
         /// <summary>
         /// This validation is done for single-tenant applications.
@@ -40,6 +42,11 @@ namespace jrt.jcgl.Configuration.Tenants.Dto
             if (Email == null)
             {
                 validationErrors.Add(new ValidationResult("Email settings can not be null", new[] { "Email" }));
+            }
+
+            if (ProductionSetting == null)
+            {
+                validationErrors.Add(new ValidationResult("ProductionSetting settings can not be null", new[] { "ProductionSetting" }));
             }
 
             if (validationErrors.Count > 0)

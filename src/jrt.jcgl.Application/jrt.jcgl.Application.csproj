@@ -136,6 +136,7 @@
     <Compile Include="Common\Dto\FindUsersInput.cs" />
     <Compile Include="Common\ICommonLookupAppService.cs" />
     <Compile Include="Configuration\Tenants\Dto\LdapSettingsEditDto.cs" />
+    <Compile Include="Configuration\Tenants\Dto\ProductionSettingEditDto.cs" />
     <Compile Include="CusomHolidays\CustomHolidaysAppService.cs" />
     <Compile Include="CusomHolidays\Dto\CreateCustomHolidayDto.cs" />
     <Compile Include="CusomHolidays\Dto\CustomHolidayListDto.cs" />

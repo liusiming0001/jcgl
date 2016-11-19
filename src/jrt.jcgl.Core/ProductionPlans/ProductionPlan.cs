@@ -5,14 +5,26 @@
 
 using Abp.Domain.Entities.Auditing;
 using System;
+using System.Collections.Generic;
 
 namespace jrt.jcgl.ProductionPlans
 {
     public class ProductionPlan : FullAuditedEntity<long>
     {
-        public int demand { get; set; }
-        public DateTime starDate { get; set; }
-
-        public System.Collections.Generic.List<ProductionPlanAudit> productionPlanAudit { get; set; }
+        /// <summary>
+        /// 需求量
+        /// </summary>
+        public decimal Demand { get; set; }
+        /// <summary>
+        /// 起始日期
+        /// </summary>
+        public DateTime StartDate { get; set; }
+        /// <summary>
+        /// 审核日志
+        /// </summary>
+        public virtual ICollection<ProductionPlanAudit> ProductionPlanAudits { get; set; }
+        public virtual ICollection<ProduictPlanLine> ProduictPlanLines { get; set; }
+        public virtual ICollection<ProductionBatchDetail> ProductionBatchDetails { get; set; }
+        public virtual ICollection<ProdutionPlanMain> ProdutionPlanMains { get; set; }
     }
 }

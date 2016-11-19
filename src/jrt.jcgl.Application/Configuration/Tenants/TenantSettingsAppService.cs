@@ -36,7 +36,12 @@ namespace jrt.jcgl.Configuration.Tenants
                     IsNewRegisteredUserActiveByDefault = await SettingManager.GetSettingValueAsync<bool>(AppSettings.UserManagement.IsNewRegisteredUserActiveByDefault),
                     IsEmailConfirmationRequiredForLogin = await SettingManager.GetSettingValueAsync<bool>(AbpZeroSettingNames.UserManagement.IsEmailConfirmationRequiredForLogin),
                     UseCaptchaOnRegistration = await SettingManager.GetSettingValueAsync<bool>(AppSettings.UserManagement.UseCaptchaOnRegistration)
+                },
+                ProductionSetting =new ProductionSettingEditDto
+                {
+                    ProductionCycle=await SettingManager.GetSettingValueAsync<int>(AppSettings.ProductionSetting.ProductionCycle)
                 }
+
             };
 
             if (!_multiTenancyConfig.IsEnabled)
@@ -93,6 +98,7 @@ namespace jrt.jcgl.Configuration.Tenants
             await SettingManager.ChangeSettingForTenantAsync(AbpSession.GetTenantId(), AbpZeroSettingNames.UserManagement.IsEmailConfirmationRequiredForLogin, input.UserManagement.IsEmailConfirmationRequiredForLogin.ToString(CultureInfo.InvariantCulture).ToLower(CultureInfo.InvariantCulture));
             await SettingManager.ChangeSettingForTenantAsync(AbpSession.GetTenantId(), AppSettings.UserManagement.UseCaptchaOnRegistration, input.UserManagement.UseCaptchaOnRegistration.ToString(CultureInfo.InvariantCulture).ToLower(CultureInfo.InvariantCulture));
 
+            await SettingManager.ChangeSettingForApplicationAsync(AppSettings.ProductionSetting.ProductionCycle, input.ProductionSetting.ProductionCycle.ToString());
             if (!_multiTenancyConfig.IsEnabled)
             {
                 input.ValidateHostSettings();

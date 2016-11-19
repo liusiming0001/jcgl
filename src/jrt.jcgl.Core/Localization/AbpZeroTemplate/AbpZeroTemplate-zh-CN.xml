@@ -312,9 +312,6 @@
     <text name="CustomHolidaysHeaderInfo" value="排班选择自定义上班日模式，在这里添加休息日"/>
     <text name="Holidays" value="休息日"/>
     <text name="CustomHolidayDeleteWarningMessage" value="确定要删除该休息日吗？"/>
-    <text name ="Enums.jrt.jcgl.Schedulings.SchedulingType.Normal" value ="正常休假"/>
-    <text name="Enums.jrt.jcgl.Schedulings.SchedulingType.Single" value="单日休假"/>
-    <text name="Enums.jrt.jcgl.Schedulings.SchedulingType.Custom" value="自定义休假"/>
     <text name="Day" value="早班"/>
     <text name="Middle" value="中班"/>
     <text name="Night" value="晚班"/>
@@ -345,5 +342,18 @@
     <text name="DeletingGetBackMaterielInfoManagers" value="删除"/>
     <text name="EditingGetBackMaterielInfoManagers" value="修改"/>
     <text name="SchedulingsManagers" value="排班管理"/>
+
+    <text name="Enums.jrt.jcgl.Schedulings.SchedulingType.Normal" value ="正常休假"/>
+    <text name="Enums.jrt.jcgl.Schedulings.SchedulingType.Single" value="单日休假"/>
+    <text name="Enums.jrt.jcgl.Schedulings.SchedulingType.Custom" value="自定义休假"/>
+    <text name="Enums.jrt.jcgl.Organizations.OrganizationType.Extract" value="提取工种"/>
+    <text name="Enums.jrt.jcgl.Organizations.OrganizationType.Membrane" value="膜组"/>
+    <text name="Enums.jrt.jcgl.Organizations.OrganizationType.ProdutionLine" value="生产线"/>
+
+    <text name="ProductionSetting" value="生产计划设置"/>
+    <text name="ProductionSetting.BatchOutput" value="批次生产量"/>
+    <text name="ProductionSetting.ProductionCycle" value="生产周期"/>
+    <text name="ProductionCycle_Hint" value="单位/天"/>
+    <text name="BatchOutput_Hint" value="单位/千克"/>
   </texts>
 </localizationDictionary>

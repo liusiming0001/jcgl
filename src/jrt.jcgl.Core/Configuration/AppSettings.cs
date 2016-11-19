@@ -17,5 +17,14 @@ namespace jrt.jcgl.Configuration
             public const string IsNewRegisteredUserActiveByDefault = "App.UserManagement.IsNewRegisteredUserActiveByDefault";
             public const string UseCaptchaOnRegistration = "App.UserManagement.UseCaptchaOnRegistration";
         }
+
+        public static class ProductionSetting
+        {
+            /// <summary>
+            /// 生产周期
+            /// </summary>
+            public const string ProductionCycle = "App.ProductionSetting.ProductionCycle";
+           
+        }
     }
 }

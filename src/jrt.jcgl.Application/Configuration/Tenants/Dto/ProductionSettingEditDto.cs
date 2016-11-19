@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace jrt.jcgl.Organizations
+namespace jrt.jcgl.Configuration.Tenants.Dto
 {
-    public enum OrganizationType
+    public class ProductionSettingEditDto
     {
-        Extract,
-        Membrane,
-        ProdutionLine
+        public int ProductionCycle { get; set; }
     }
 }

@@ -4,15 +4,30 @@
 // Purpose: Definition of Class RawMaterialConstant
 
 using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
+using jrt.jcgl.RawMaterials;
 using System;
 
 namespace jrt.jcgl.RawMaterials
 {
-    public class RawMaterialConstant : Entity<int>
+    public class RawMaterialConstant : FullAuditedEntity<int>
     {
-        public int rawMaterialId { get; set; }
-        public RawMaterialConstantType type { get; set; }
-        public decimal constant { get; set; }
+        /// <summary>
+        /// 药品
+        /// </summary>
+        public virtual int RawMaterialId { get; set; }
+        /// <summary>
+        /// 常数类型
+        /// </summary>
+        public RawMaterialConstantType Type { get; set; }
+        /// <summary>
+        /// 常数
+        /// </summary>
+        public decimal Constant { get; set; }
+        /// <summary>
+        /// 药品
+        /// </summary>
+        public virtual RawMaterial RawMaterial { get; set; }
 
     }
 }

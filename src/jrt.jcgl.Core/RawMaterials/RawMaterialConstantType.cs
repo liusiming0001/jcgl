@@ -12,6 +12,7 @@ namespace jrt.jcgl.RawMaterials
       M,
       T,
       SGL,
-      CYL
+      CYL,
+      N
    }
 }

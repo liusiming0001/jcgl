@@ -16,7 +16,8 @@
                 vm.loading = true;
                 tenantSettingsService.getAllSettings()
                     .success(function(result) {
-                        vm.settings = result;
+                        vm.settings = result
+                        console.log(result);
                     }).finally(function() {
                         vm.loading = false;
                     });
