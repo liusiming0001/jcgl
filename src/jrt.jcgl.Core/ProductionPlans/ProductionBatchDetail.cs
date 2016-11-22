@@ -16,6 +16,10 @@ namespace jrt.jcgl.ProductionPlans
     public class ProductionBatchDetail : FullAuditedEntity<long>
     {
         /// <summary>
+        /// 总计划ID
+        /// </summary>
+        public virtual long ProductionPlanId { get; set; }
+        /// <summary>
         /// 序号
         /// </summary>
         public int SerailNum { get; set; }
@@ -28,13 +32,17 @@ namespace jrt.jcgl.ProductionPlans
         /// </summary>
         public string BatchNum { get; set; }
         /// <summary>
-        /// 生产线个数
+        /// 生产线
         /// </summary>
-        public int ProductionLineCount { get; set; }
+        public string ProductionLine { get; set; }
         /// <summary>
         /// 任务量
         /// </summary>
-        public decimal Mission { get; set; }
+        public decimal MissionQuantity { get; set; }
+        /// <summary>
+        /// 批次生产量
+        /// </summary>
+        public decimal BatchQuantity { get; set; }
         /// <summary>
         /// 生产日期
         /// </summary>
@@ -51,5 +59,9 @@ namespace jrt.jcgl.ProductionPlans
         /// 原料
         /// </summary>
         public virtual RawMaterial RawMaterial { get; set; }
+        /// <summary>
+        /// 总计划实体
+        /// </summary>
+        public virtual ProductionPlan ProductionPlan { get; set; }
     }
 }

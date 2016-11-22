@@ -273,6 +273,26 @@
     <Compile Include="Migrations\201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.Designer.cs">
       <DependentUpon>201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611201019427_Alert_ProductionBatchDetail_ProductionLine.cs" />
+    <Compile Include="Migrations\201611201019427_Alert_ProductionBatchDetail_ProductionLine.Designer.cs">
+      <DependentUpon>201611201019427_Alert_ProductionBatchDetail_ProductionLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611201026142_Alert_ProductionPlanAudit_AuditRoleId_And_ProductionBatchDetail_ProductionPlan.cs" />
+    <Compile Include="Migrations\201611201026142_Alert_ProductionPlanAudit_AuditRoleId_And_ProductionBatchDetail_ProductionPlan.Designer.cs">
+      <DependentUpon>201611201026142_Alert_ProductionPlanAudit_AuditRoleId_And_ProductionBatchDetail_ProductionPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611201033482_Alert_ProductionBatchDetail_MissionQuantityAndBatchQuantity.cs" />
+    <Compile Include="Migrations\201611201033482_Alert_ProductionBatchDetail_MissionQuantityAndBatchQuantity.Designer.cs">
+      <DependentUpon>201611201033482_Alert_ProductionBatchDetail_MissionQuantityAndBatchQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611201201297_Alert_Organization_SerialNumber.cs" />
+    <Compile Include="Migrations\201611201201297_Alert_Organization_SerialNumber.Designer.cs">
+      <DependentUpon>201611201201297_Alert_Organization_SerialNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611201237503_Alert_Organization_OrganizationType.cs" />
+    <Compile Include="Migrations\201611201237503_Alert_Organization_OrganizationType.Designer.cs">
+      <DependentUpon>201611201237503_Alert_Organization_OrganizationType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="AbpZeroTemplateDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -410,6 +430,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.resx">
       <DependentUpon>201611191310437_Alert_ProdutionPlanMain_RawMaterialRequirement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611201019427_Alert_ProductionBatchDetail_ProductionLine.resx">
+      <DependentUpon>201611201019427_Alert_ProductionBatchDetail_ProductionLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611201026142_Alert_ProductionPlanAudit_AuditRoleId_And_ProductionBatchDetail_ProductionPlan.resx">
+      <DependentUpon>201611201026142_Alert_ProductionPlanAudit_AuditRoleId_And_ProductionBatchDetail_ProductionPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611201033482_Alert_ProductionBatchDetail_MissionQuantityAndBatchQuantity.resx">
+      <DependentUpon>201611201033482_Alert_ProductionBatchDetail_MissionQuantityAndBatchQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611201201297_Alert_Organization_SerialNumber.resx">
+      <DependentUpon>201611201201297_Alert_Organization_SerialNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611201237503_Alert_Organization_OrganizationType.resx">
+      <DependentUpon>201611201237503_Alert_Organization_OrganizationType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

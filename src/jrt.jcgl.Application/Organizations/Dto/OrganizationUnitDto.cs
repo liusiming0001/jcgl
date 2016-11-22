@@ -14,5 +14,6 @@ namespace jrt.jcgl.Organizations.Dto
         public string DisplayName { get; set; }
 
         public int MemberCount { get; set; }
+        public OrganizationType? OrganizationType { get; set; }
     }
 }

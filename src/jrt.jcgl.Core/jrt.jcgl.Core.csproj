@@ -140,6 +140,7 @@
     <Compile Include="ProductionPlans\ProductionPlanManager.cs" />
     <Compile Include="ProductionPlans\ProduictPlanLine.cs" />
     <Compile Include="ProductionPlans\ProdutionPlanMain.cs" />
+    <Compile Include="ProductionPlans\RestType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RawMaterials\RawMaterial.cs" />
     <Compile Include="RawMaterials\RawMaterialConstant.cs" />

@@ -14,6 +14,8 @@ namespace jrt.jcgl.Organizations
 
         public virtual OrganizationUnit OrganizationUnit1 { get; set; }
 
-        public OrganizationType Type { get; set; }
+        public OrganizationType? Type { get; set; }
+
+        public int? SerialNumber { get; set; }
     }
 }

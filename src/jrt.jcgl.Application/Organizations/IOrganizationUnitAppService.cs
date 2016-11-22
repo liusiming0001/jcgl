@@ -20,9 +20,11 @@ namespace jrt.jcgl.Organizations
         Task DeleteOrganizationUnit(IdInput<long> input);
 
         Task AddUserToOrganizationUnit(UserToOrganizationUnitInput input);
-        
+
         Task RemoveUserFromOrganizationUnit(UserToOrganizationUnitInput input);
 
         Task<bool> IsInOrganizationUnit(UserToOrganizationUnitInput input);
+
+        ListResultDto<NameValueDto> GetOrganizationTypees();
     }
 }

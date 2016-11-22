@@ -355,5 +355,7 @@
     <text name="ProductionSetting.ProductionCycle" value="生产周期"/>
     <text name="ProductionCycle_Hint" value="单位/天"/>
     <text name="BatchOutput_Hint" value="单位/千克"/>
+
+    <text name="Organization.Type" value="组织类型"/>
   </texts>
 </localizationDictionary>

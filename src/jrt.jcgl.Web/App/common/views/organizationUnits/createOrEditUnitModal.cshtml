@@ -13,15 +13,12 @@
                 <label>@L("Name")</label>
             </div>
         </div>
-        <div class="modal-body">
-            <select class="form-control" ng-model="vm.type_selcet">
-                <option value="0"> 
-                    提取工种
-                </option>
-                <option value="1">
-                    膜工种
-                </option>
-            </select>
+        <div class="modal-body" ng-if="vm.organizationUnit.parentId && vm.organizationUnit.parentType == 2">
+            <label>@L("Organization.Type")</label>
+            <select class="form-control" ng-model="vm.type_selcet"
+                    ng-options="opt.name for opt in vm.types track by opt.value"
+                    ui-options='{ iconBase: "fa", tickIcon: "fa fa-check" }'
+                    required></select>
         </div>
         <div class="modal-footer">
             <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>

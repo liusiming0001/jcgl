@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace jrt.jcgl.ProductionPlans
 {
-    public interface IProductionPlanManager
+    public enum RestType
     {
-        Task FormulateProdutionPlan(decimal Demand, DateTime StartDate, long[] OrganzationUnitIds, RestType RestType);
+        Normal,
+        Single,
+        Custom
     }
 }

@@ -24,7 +24,7 @@ namespace jrt.jcgl.ProductionPlans
         /// <summary>
         /// 权限
         /// </summary>
-        public virtual long AuditRoleId { get; set; }
+        public virtual int AuditRoleId { get; set; }
         /// <summary>
         /// 审核时间
         /// </summary>

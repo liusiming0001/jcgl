@@ -10,6 +10,7 @@ using Abp.Linq.Extensions;
 using Abp.Organizations;
 using jrt.jcgl.Authorization;
 using jrt.jcgl.Organizations.Dto;
+using System;
 
 namespace jrt.jcgl.Organizations
 {
@@ -41,24 +42,33 @@ namespace jrt.jcgl.Organizations
 
             var items = await query.ToListAsync();
 
-            return new ListResultOutput<OrganizationUnitDto>(
+            var output = new ListResultOutput<OrganizationUnitDto>(
                 items.Select(item =>
                 {
                     var dto = item.ou.MapTo<OrganizationUnitDto>();
                     dto.MemberCount = item.memberCount;
+
+                    var oud = _organizationRepository.GetAllList().Where(o => o.OrganizationUnitId == dto.Id).ToList();
+                    oud?.ForEach(o =>
+                    {
+                        dto.OrganizationType = o.Type;
+                    });
+
                     return dto;
                 }).ToList()
                 );
+
+            return output;
         }
 
         public async Task<PagedResultOutput<OrganizationUnitUserListDto>> GetOrganizationUnitUsers(GetOrganizationUnitUsersInput input)
         {
             var query = from uou in _userOrganizationUnitRepository.GetAll()
-                join ou in _organizationUnitRepository.GetAll() on uou.OrganizationUnitId equals ou.Id
-                join user in UserManager.Users on uou.UserId equals user.Id
-                where uou.OrganizationUnitId == input.Id
-                orderby input.Sorting
-                select new {uou, user};
+                        join ou in _organizationUnitRepository.GetAll() on uou.OrganizationUnitId equals ou.Id
+                        join user in UserManager.Users on uou.UserId equals user.Id
+                        where uou.OrganizationUnitId == input.Id
+                        orderby input.Sorting
+                        select new { uou, user };
 
             var totalCount = await query.CountAsync();
             var items = await query.PageBy(input).ToListAsync();
@@ -81,30 +91,22 @@ namespace jrt.jcgl.Organizations
             await _organizationUnitManager.CreateAsync(organizationUnit);
             await CurrentUnitOfWork.SaveChangesAsync();
 
-            switch (input.Type)
+            await _organizationRepository.InsertAsync(new Organization
             {
-                case OrganizationType.Extract:
-                   await _organizationRepository.InsertAsync(new Organization {
-                       OrganizationUnitId= organizationUnit.Id,
-                       Type=OrganizationType.Extract
-                   });break;
-                case OrganizationType.Membrane:
-                    await _organizationRepository.InsertAsync(new Organization
-                    {
-                        OrganizationUnitId = organizationUnit.Id,
-                        Type = OrganizationType.Membrane
-                    }); break;
-                default:break;
-            }
-
-            return organizationUnit.MapTo<OrganizationUnitDto>();
+                OrganizationUnitId = organizationUnit.Id,
+                Type = input.Type,
+                SerialNumber = (input.Type == OrganizationType.ProdutionLine) ? (int?)(await _organizationRepository.CountAsync(o => o.Type == OrganizationType.ProdutionLine) + 1) : null
+            });
+            var output = organizationUnit.MapTo<OrganizationUnitDto>();
+            output.OrganizationType = input.Type;
+            return output;
         }
 
         [AbpAuthorize(AppPermissions.Pages_Administration_OrganizationUnits_ManageOrganizationTree)]
         public async Task<OrganizationUnitDto> UpdateOrganizationUnit(UpdateOrganizationUnitInput input)
         {
             var organizationUnit = await _organizationUnitRepository.GetAsync(input.Id);
-            
+
             organizationUnit.DisplayName = input.DisplayName;
 
             await _organizationUnitManager.UpdateAsync(organizationUnit);
@@ -116,7 +118,7 @@ namespace jrt.jcgl.Organizations
         public async Task<OrganizationUnitDto> MoveOrganizationUnit(MoveOrganizationUnitInput input)
         {
             await _organizationUnitManager.MoveAsync(input.Id, input.NewParentId);
-            
+
             return await CreateOrganizationUnitDto(
                 await _organizationUnitRepository.GetAsync(input.Id)
                 );
@@ -151,6 +153,11 @@ namespace jrt.jcgl.Organizations
             var dto = organizationUnit.MapTo<OrganizationUnitDto>();
             dto.MemberCount = await _userOrganizationUnitRepository.CountAsync(uou => uou.OrganizationUnitId == organizationUnit.Id);
             return dto;
+        }
+
+        public ListResultDto<NameValueDto> GetOrganizationTypees()
+        {
+            return EnumToNameValueList<OrganizationType>();
         }
     }
 }

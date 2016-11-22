@@ -60,7 +60,8 @@
 
                                 vm.organizationTree.openCreateOrEditUnitModal({
                                     id: node.id,
-                                    displayName: node.original.displayName
+                                    displayName: node.original.displayName,
+                                    parentId: node.parentId
                                 }, function (updatedOu) {
                                     node.original.displayName = updatedOu.displayName;
                                     instance.rename_node(node, vm.organizationTree.generateTextOnTree(updatedOu));
@@ -72,7 +73,7 @@
                             label: app.localize('AddSubUnit'),
                             _disabled: !vm.permissions.manageOrganizationTree,
                             action: function () {
-                                vm.organizationTree.addUnit(node.id);
+                                vm.organizationTree.addUnit(node.id, node.original.organizationType);
                             }
                         },
 
@@ -111,10 +112,11 @@
                     return items;
                 },
 
-                addUnit: function (parentId) {
+                addUnit: function (parentId, parentType) {
                     var instance = $.jstree.reference(vm.organizationTree.$tree);
                     vm.organizationTree.openCreateOrEditUnitModal({
-                        parentId: parentId
+                        parentId: parentId,
+                        parentType: parentType
                     }, function (newOu) {
                         instance.create_node(
                             parentId ? instance.get_node(parentId) : '#',
@@ -125,6 +127,7 @@
                                 displayName: newOu.displayName,
                                 memberCount: 0,
                                 text: vm.organizationTree.generateTextOnTree(newOu),
+                                organizationType: newOu.organizationType,
                                 state: {
                                     opened: true
                                 }
@@ -164,6 +167,8 @@
 
                 getTreeDataFromServer: function (callback) {
                     organizationUnitService.getOrganizationUnits({}).success(function (result) {
+
+                        console.log(result);
                         var treeData = _.map(result.items, function (item) {
                             return {
                                 id: item.id,
@@ -172,6 +177,7 @@
                                 displayName: item.displayName,
                                 memberCount: item.memberCount,
                                 text: vm.organizationTree.generateTextOnTree(item),
+                                organizationType: item.organizationType,
                                 state: {
                                     opened: true
                                 }

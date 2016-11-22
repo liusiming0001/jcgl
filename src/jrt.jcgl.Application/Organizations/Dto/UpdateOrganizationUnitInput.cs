@@ -12,6 +12,5 @@ namespace jrt.jcgl.Organizations.Dto
         [Required]
         [StringLength(OrganizationUnit.MaxDisplayNameLength)]
         public string DisplayName { get; set; }
-        public OrganizationType? Type { get; set; }
     }
 }
