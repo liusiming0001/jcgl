@@ -379,5 +379,22 @@
     <text name="Enums.jrt.jcgl.RawMaterials.RawMaterialConstantType.SGL" value="收膏率"/>
     <text name="Enums.jrt.jcgl.RawMaterials.RawMaterialConstantType.CYL" value="出药量"/>
     <text name="Enums.jrt.jcgl.RawMaterials.RawMaterialConstantType.N" value="生产能力"/>
+
+    <text name="Stocks" value="库存管理"/>
+    <text name="Stock.Info" value="管理药品的原料与浓缩液出入库信息。"/>
+    <text name="Stock.RawMaterialName" value="药品名"/>
+    <text name="Stock.StockValue" value="库存"/>
+    <text name="Stock.Type" value="库存类型"/>
+    <text name="Stock" value="库存"/>
+    <text name="Stock.Edit" value="更新库存信息"/>
+    <text name="Enums.jrt.jcgl.Stocks.StockLogType.Input" value="入库"/>
+    <text name="Enums.jrt.jcgl.Stocks.StockLogType.Output" value="出库"/>
+    <text name="Enums.jrt.jcgl.Stocks.StockType.NSY" value="浓缩液"/>
+    <text name="Enums.jrt.jcgl.Stocks.StockType.YL" value="原料"/>
+    <text name="StockLog.HandleUserName" value="出\入库人"/>
+    <text name="StockLog.Remark" value="备注"/>
+    <text name="StockLog.HandleTime" value="库存"/>
+    <text name="StockLog.SelectUser" value="选择出\入库人"/>
+    <text name="StockLog.Value" value="操作量"/>
   </texts>
 </localizationDictionary>

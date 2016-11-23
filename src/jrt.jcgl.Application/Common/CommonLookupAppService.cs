@@ -58,7 +58,7 @@ namespace jrt.jcgl.Common
                 userCount,
                 users.Select(u =>
                     new NameValueDto(
-                        u.Name + " " + u.Surname + " (" + u.EmailAddress + ")",
+                        u.Name,
                         u.Id.ToString()
                         )
                     ).ToList()

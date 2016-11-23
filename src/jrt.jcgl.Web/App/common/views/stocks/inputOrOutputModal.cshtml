@@ -1,0 +1,39 @@
+﻿<div>
+    <form name="roleCreateOrEditForm" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span ng-if="vm.stock.type==0">@L("Enums.jrt.jcgl.Stocks.StockLogType.Input"): {{vm.stock.name}}</span>
+                <span ng-if="vm.stock.type==1">@L("Enums.jrt.jcgl.Stocks.StockLogType.Output"):{{vm.stock.name}}</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input class="form-control" type="number"
+                       ng-class="{'edited':vm.value}"
+                       ng-model="vm.value" required>
+                <label>@L("StockLog.Value")</label>
+            </div>
+            <div class="form-group form-md-line-input inputs no-hint">
+                <div class="portlet-input">
+                    <div class="input-group">
+                        <input ng-model="vm.userName" auto-focus readonly class="form-control" placeholder="@L("StockLog.HandleUserName")" type="text" required>
+                        <div class="input-group-btn">
+                            <buttona ng-click="vm.openAddModal()" class="btn btn-xs btn-primary">
+                                <i class="fa fa-plus"></i> @L("StockLog.SelectUser")
+                            </buttona>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <textarea type="text" name="Remark" class="form-control" ng-class="{'edited':vm.remark}"
+                          ng-model="vm.remark" style="height:100px" />
+                <label>@L("StockLog.Remark")</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
+            <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="roleCreateOrEditForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        </div>
+    </form>
+</div>

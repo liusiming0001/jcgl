@@ -86,6 +86,13 @@ namespace jrt.jcgl.Web.App.Startup
                             requiredPermissionName: AppPermissions.Pages_ProductionManagers_RawMaterialInfoManagers
                             )
                         ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.Stocks,
+                            L("Stocks"),
+                            url: "stocks",
+                            icon: "icon-plus",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_Stocks
+                            )
+                        ).AddItem(new MenuItemDefinition(
                             PageNames.App.ProductionManager.GetBackMaterielInfoManagers,
                             L("GetBackMaterielInfoManagers"),
                             url: "getbackmaterielinfomanagers",

@@ -296,6 +296,8 @@
     <Content Include="App\common\views\schedulingsdays\index.js" />
     <Content Include="App\common\views\schedulings\createOrEditModal.js" />
     <Content Include="App\common\views\schedulings\index.js" />
+    <Content Include="App\common\views\stocks\index.js" />
+    <Content Include="App\common\views\stocks\inputOrOutputModal.js" />
     <Content Include="App\common\views\users\createOrEditModal.css">
       <DependentUpon>createOrEditModal.less</DependentUpon>
     </Content>
@@ -2817,6 +2819,8 @@
     <Content Include="App\common\views\schedulingsdays\index.cshtml" />
     <Content Include="App\common\views\rawmaterials\index.cshtml" />
     <Content Include="App\common\views\rawmaterials\createOrEditModal.cshtml" />
+    <Content Include="App\common\views\stocks\index.cshtml" />
+    <Content Include="App\common\views\stocks\inputOrOutputModal.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

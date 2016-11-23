@@ -3,6 +3,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.UI;
 using jrt.jcgl.RawMaterials.Dto;
+using jrt.jcgl.Stocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,25 @@ namespace jrt.jcgl.RawMaterials
 {
     public class RawMaterialAppService : AbpZeroTemplateAppServiceBase, IRawMaterialAppService
     {
+        #region 变量
         private readonly IRepository<RawMaterial> _rawMaterialRepository;
+        private readonly IRepository<Stock> _stockRepository;
         private readonly IRepository<RawMaterialConstant> _rawMaterialConstantRepository;
-        public RawMaterialAppService(IRepository<RawMaterial> _rawMaterialRepository,
+        #endregion
+
+        #region 构造函数
+        public RawMaterialAppService(
+            IRepository<RawMaterial> _rawMaterialRepository,
+            IRepository<Stock> _stockRepository,
             IRepository<RawMaterialConstant> _rawMaterialConstantRepository)
         {
             this._rawMaterialRepository = _rawMaterialRepository;
+            this._stockRepository = _stockRepository;
             this._rawMaterialConstantRepository = _rawMaterialConstantRepository;
         }
+        #endregion
+
+        #region 公共方法
         /// <summary>
         /// 更新或创建药品
         /// </summary>
@@ -68,36 +80,6 @@ namespace jrt.jcgl.RawMaterials
             await _rawMaterialRepository.DeleteAsync(id);
         }
         /// <summary>
-        /// 创建
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        private async Task CreateRawMaterial(CreateOrUpdateDto input)
-        {
-            var raw = await _rawMaterialRepository.FirstOrDefaultAsync(r => r.Name == input.Name);
-            if (raw != null)
-                throw new UserFriendlyException("该药品名称已被录入，请仔细检查输入信息。");
-            var entiy = input.MapTo<RawMaterial>();
-            var constant = input.Constant.MapTo<ICollection<RawMaterialConstant>>();
-            entiy.RawMaterialConstant = constant;
-            await _rawMaterialRepository.InsertAsync(entiy);
-        }
-        /// <summary>
-        /// 更新
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        private async Task UpdateRawMaterial(CreateOrUpdateDto input)
-        {
-            var raw = await _rawMaterialRepository.FirstOrDefaultAsync(r => r.Name == input.Name);
-            if (raw == null)
-                throw new UserFriendlyException("无法找到要更新的药品。");
-            var entiy = input.MapTo(raw);
-            var constant = input.Constant.MapTo<ICollection<RawMaterialConstant>>();
-            entiy.RawMaterialConstant = constant;
-            await _rawMaterialRepository.UpdateAsync(entiy);
-        }
-        /// <summary>
         /// 获取计量单位枚举
         /// </summary>
         /// <returns></returns>
@@ -113,5 +95,52 @@ namespace jrt.jcgl.RawMaterials
         {
             return EnumToNameValueList<RawMaterialConstantType>();
         }
+        #endregion
+
+        #region 私有方法
+        /// <summary>
+        /// 创建
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private async Task CreateRawMaterial(CreateOrUpdateDto input)
+        {
+            var raw = await _rawMaterialRepository.FirstOrDefaultAsync(r => r.Name == input.Name);
+            if (raw != null)
+                throw new UserFriendlyException("该药品名称已被录入，请仔细检查输入信息。");
+            var entiy = input.MapTo<RawMaterial>();
+            var constant = input.Constant.MapTo<ICollection<RawMaterialConstant>>();
+            entiy.RawMaterialConstant = constant;
+            await _rawMaterialRepository.InsertAsync(entiy);
+            await _stockRepository.InsertAsync(new Stock
+            {
+                RawMaterialId = entiy.Id,
+                Type = StockType.YL,
+                StockValue = 0
+            });
+            await _stockRepository.InsertAsync(new Stock
+            {
+                RawMaterialId = entiy.Id,
+                Type = StockType.NSY,
+                StockValue = 0
+            });
+        }
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private async Task UpdateRawMaterial(CreateOrUpdateDto input)
+        {
+            var raw = await _rawMaterialRepository.FirstOrDefaultAsync(r => r.Name == input.Name);
+            if (raw == null)
+                throw new UserFriendlyException("无法找到要更新的药品。");
+            var entiy = input.MapTo(raw);
+            var constant = input.Constant.MapTo<ICollection<RawMaterialConstant>>();
+            entiy.RawMaterialConstant = constant;
+            await _rawMaterialRepository.UpdateAsync(entiy);
+        } 
+        #endregion
+
     }
 }

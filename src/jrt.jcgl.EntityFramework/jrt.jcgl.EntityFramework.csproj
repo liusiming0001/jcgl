@@ -293,6 +293,10 @@
     <Compile Include="Migrations\201611201237503_Alert_Organization_OrganizationType.Designer.cs">
       <DependentUpon>201611201237503_Alert_Organization_OrganizationType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611231210242_Alert_StockLog_TypeAndRemark.cs" />
+    <Compile Include="Migrations\201611231210242_Alert_StockLog_TypeAndRemark.Designer.cs">
+      <DependentUpon>201611231210242_Alert_StockLog_TypeAndRemark.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="AbpZeroTemplateDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -445,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611201237503_Alert_Organization_OrganizationType.resx">
       <DependentUpon>201611201237503_Alert_Organization_OrganizationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611231210242_Alert_StockLog_TypeAndRemark.resx">
+      <DependentUpon>201611231210242_Alert_StockLog_TypeAndRemark.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

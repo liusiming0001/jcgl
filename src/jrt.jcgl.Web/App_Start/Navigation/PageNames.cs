@@ -31,6 +31,7 @@ namespace jrt.jcgl.Web.Navigation
                 public const string Schedulings = "ProductionManagers.Schedulings";
                 public const string SchedulingsDay = "ProductionManagers.SchedulingsDay";
                 public const string CustomHolidays = "ProductionManagers.CustomHolidays";
+                public const string Stocks = "ProductionManagers.Stocks";
             }
             public static class Host
             {

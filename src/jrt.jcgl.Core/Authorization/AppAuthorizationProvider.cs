@@ -104,6 +104,9 @@ namespace jrt.jcgl.Authorization
             var customHolidays = schedulingsmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_CustomHolidays, L("CustomHolidays"));
             customHolidays.CreateChildPermission(AppPermissions.Pages_ProductionManagers_CustomHolidays_Create, L("CustomHolidays.Create"));
             customHolidays.CreateChildPermission(AppPermissions.Pages_ProductionManagers_CustomHolidays_Delete, L("CustomHolidays.Delete"));
+            //库存
+            var stocks = materielinfomanager.CreateChildPermission(AppPermissions.Pages_ProductionManagers_Stocks,L("Stocks"));
+            stocks.CreateChildPermission(AppPermissions.Pages_ProductionManagers_Stocks_Edit,L("Stocks.Edit"));
         }
 
         private static ILocalizableString L(string name)

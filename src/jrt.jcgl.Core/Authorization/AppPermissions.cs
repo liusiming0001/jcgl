@@ -116,6 +116,10 @@
         public const string Pages_ProductionManagers_GetBackMaterielInfoManagers_Create = "Pages.ProductionManagers.GetBackMaterielInfoManagers.Create";
         public const string Pages_ProductionManagers_GetBackMaterielInfoManagers_Delete = "Pages.ProductionManagers.GetBackMaterielInfoManagers.Delete";
         public const string Pages_ProductionManagers_GetBackMaterielInfoManagers_Edit = "Pages.ProductionManagers.GetBackMaterielInfoManages.Edit";
-
+        /// <summary>
+        /// 库存
+        /// </summary>
+        public const string Pages_ProductionManagers_Stocks = "Pages.ProductionManagers.Stocks";
+        public const string Pages_ProductionManagers_Stocks_Edit = "Pages.ProductionManagers.Stocks.Edit";
     }
 }

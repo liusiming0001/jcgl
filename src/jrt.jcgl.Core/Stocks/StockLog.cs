@@ -16,6 +16,8 @@ namespace jrt.jcgl.Stocks
         public decimal Quality { get; set; }
         public virtual long? HandleUserId { get; set; }
         public DateTime HandleTime { get; set; }
+        public StockLogType Type { get; set; }
+        public string Remark { get; set; }
         public virtual Stock Stock { get; set; }
         public virtual User HandleUser { get; set; }
     }

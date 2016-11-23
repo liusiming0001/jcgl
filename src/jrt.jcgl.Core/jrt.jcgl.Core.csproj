@@ -153,6 +153,7 @@
     <Compile Include="Security\SimpleStringCipher.cs" />
     <Compile Include="Stocks\Stock.cs" />
     <Compile Include="Stocks\StockLog.cs" />
+    <Compile Include="Stocks\StockLogType.cs" />
     <Compile Include="Stocks\StockType.cs" />
     <Compile Include="Storage\DbBinaryObjectManager.cs" />
     <Compile Include="Storage\IBinaryObjectManager.cs" />
