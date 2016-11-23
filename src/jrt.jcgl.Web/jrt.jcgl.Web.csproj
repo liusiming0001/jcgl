@@ -291,6 +291,8 @@
     <Content Include="App\common\views\organizationUnits\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\rawmaterials\createOrEditModal.js" />
+    <Content Include="App\common\views\rawmaterials\index.js" />
     <Content Include="App\common\views\schedulingsdays\index.js" />
     <Content Include="App\common\views\schedulings\createOrEditModal.js" />
     <Content Include="App\common\views\schedulings\index.js" />
@@ -2813,6 +2815,8 @@
     <Content Include="App\common\views\customholidays\createOrEditModal.cshtml" />
     <Content Include="App\common\views\schedulings\createOrEditModal.cshtml" />
     <Content Include="App\common\views\schedulingsdays\index.cshtml" />
+    <Content Include="App\common\views\rawmaterials\index.cshtml" />
+    <Content Include="App\common\views\rawmaterials\createOrEditModal.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

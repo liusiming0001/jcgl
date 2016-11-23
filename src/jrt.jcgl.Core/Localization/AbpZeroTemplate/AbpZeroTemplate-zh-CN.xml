@@ -357,5 +357,27 @@
     <text name="BatchOutput_Hint" value="单位/千克"/>
 
     <text name="Organization.Type" value="组织类型"/>
+
+    <text name="RawMaterial.Name" value="药品名称"/>
+    <text name="RawMaterial.BatchNumber" value="批号"/>
+    <text name="RawMaterial.Producer" value="产地"/>
+    <text name="RawMaterial.Manufacturer" value="厂家"/>
+    <text name="RawMaterial.Supplier" value="供应商"/>
+    <text name="RawMaterial.Level" value="质量等级"/>
+    <text name="RawMaterial.Specifications" value="规格"/>
+    <text name="RawMaterial.Units" value="计量单位"/>
+    <text name="RawMaterialDeleteWarningMessage" value="您确定要删除该原料信息以及它的参数吗？"/>
+    <text name="RawMaterialInfoManager" value="原料信息管理"/>
+    <text name="RawMaterial.Info" value="管理生产中所需的原料信息"/>
+    <text name="CreateNewRawMaterial" value="添加药品信息"/>
+    <text name="RawMaterialConstant" value="药品参数信息"/>
+    <text name="RawMaterial.BaseInfo" value="原料基本信息"/>
+    <text name="Enums.jrt.jcgl.RawMaterials.UnitsType.KG" value="千克"/>
+    <text name="Enums.jrt.jcgl.RawMaterials.UnitsType.T" value="吨"/>
+    <text name="Enums.jrt.jcgl.RawMaterials.RawMaterialConstantType.M" value="浓缩液比例常数"/>
+    <text name="Enums.jrt.jcgl.RawMaterials.RawMaterialConstantType.T" value="干料需求常数"/>
+    <text name="Enums.jrt.jcgl.RawMaterials.RawMaterialConstantType.SGL" value="收膏率"/>
+    <text name="Enums.jrt.jcgl.RawMaterials.RawMaterialConstantType.CYL" value="出药量"/>
+    <text name="Enums.jrt.jcgl.RawMaterials.RawMaterialConstantType.N" value="生产能力"/>
   </texts>
 </localizationDictionary>

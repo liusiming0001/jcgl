@@ -81,7 +81,7 @@ namespace jrt.jcgl.Web.App.Startup
                         ).AddItem(new MenuItemDefinition(
                             PageNames.App.ProductionManager.RawMaterialInfoManagers,
                             L("RawMaterialInfoManagers"),
-                            url: "rawmaterialinfomanagers",
+                            url: "rawmaterials",
                             icon: "icon-plus",
                             requiredPermissionName: AppPermissions.Pages_ProductionManagers_RawMaterialInfoManagers
                             )

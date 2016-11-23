@@ -1,0 +1,77 @@
+﻿<div>
+    <form name="roleCreateOrEditForm" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span ng-if="vm.role.id">@L("EditRole"): {{vm.role.displayName}}</span>
+                <span ng-if="!vm.role.id">@L("CreateNewRole")</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <tabset class="tab-container tabbable-line">
+                <tab heading="@L("RawMaterial.BaseInfo")">
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input class="form-control" type="text"
+                               ng-class="{'edited':vm.raw.name}"
+                               ng-model="vm.raw.name" required>
+                        <label>@L("RawMaterial.Name")</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input class="form-control" type="text"
+                               ng-class="{'edited':vm.raw.batchNumber}"
+                               ng-model="vm.raw.batchNumber" required>
+                        <label>@L("RawMaterial.BatchNumber")</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input class="form-control" type="text"
+                               ng-class="{'edited':vm.raw.producer}"
+                               ng-model="vm.raw.producer" required>
+                        <label>@L("RawMaterial.Producer")</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input class="form-control" type="text"
+                               ng-class="{'edited':vm.raw.manufacturer}"
+                               ng-model="vm.raw.manufacturer" required>
+                        <label>@L("RawMaterial.Manufacturer")</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input class="form-control" type="text"
+                               ng-class="{'edited':vm.raw.supplier}"
+                               ng-model="vm.raw.supplier" required>
+                        <label>@L("RawMaterial.Supplier")</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input class="form-control" type="text"
+                               ng-class="{'edited':vm.raw.level}"
+                               ng-model="vm.raw.level" required>
+                        <label>@L("RawMaterial.Level")</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input class="form-control" type="text"
+                               ng-class="{'edited':vm.raw.specifications}"
+                               ng-model="vm.raw.specifications" required>
+                        <label>@L("RawMaterial.Specifications")</label>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label ">
+                        <label>@L("RawMaterial.Units")</label>
+                        <select class="form-control" ng-model="vm.select_Type"
+                                ng-options="opt.name for opt in vm.types track by opt.value"
+                                ui-options='{ iconBase: "fa", tickIcon: "fa fa-check" }'
+                                required></select>
+                    </div>
+                </tab>
+                <tab heading="@L("RawMaterialConstant")">
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint" ng-repeat="item in vm.raw.constant">
+                        <input class="form-control" type="number" name="{{item.constant}}" ng-model="item.constant" required>
+                        <label>
+                            {{item.name}}
+                        </label>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
+            <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="roleCreateOrEditForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        </div>
+    </form>
+</div>

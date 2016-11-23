@@ -138,6 +138,13 @@ appModule.config([
                 menu: 'ProductionManagers.CustomHolidays'
             });
         }
+        if (abp.auth.hasPermission('Pages.ProductionManagers.RawMaterialInfoManagers')) {
+            $stateProvider.state('rawmaterials', {
+                url: '/rawmaterials',
+                templateUrl: '~/App/common/views/rawmaterials/index.cshtml',
+                menu: 'ProductionManagers.RawMaterialInfoManagers'
+            });
+        }
         //HOST routes
 
         $stateProvider.state('host', {
