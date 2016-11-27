@@ -27,9 +27,9 @@
                     });
                 }
                 else {
-                    stocksService.stockInput({
+                    stocksService.stockOutput({
                         id: vm.stock.id,
-                        InputValue: vm.value,
+                        OutputValue: vm.value,
                         userId: vm.userId,
                         remark: vm.remark
                     }).success(function () {

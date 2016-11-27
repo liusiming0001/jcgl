@@ -16,15 +16,15 @@ namespace jrt.jcgl.ProductionPlans
         /// <summary>
         /// 总计划ID
         /// </summary>
-        public virtual long ProductionPlanId { get; set; }
+        public virtual long? ProductionPlanId { get; set; }
         /// <summary>
         /// 审核人
         /// </summary>
-        public virtual long AuditUserId { get; set; }
+        public virtual long? AuditUserId { get; set; }
         /// <summary>
         /// 权限
         /// </summary>
-        public virtual int AuditRoleId { get; set; }
+        public virtual int? AuditRoleId { get; set; }
         /// <summary>
         /// 审核时间
         /// </summary>

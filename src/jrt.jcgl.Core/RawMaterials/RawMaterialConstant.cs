@@ -15,7 +15,7 @@ namespace jrt.jcgl.RawMaterials
         /// <summary>
         /// 药品
         /// </summary>
-        public virtual int RawMaterialId { get; set; }
+        public virtual int? RawMaterialId { get; set; }
         /// <summary>
         /// 常数类型
         /// </summary>
@@ -28,6 +28,10 @@ namespace jrt.jcgl.RawMaterials
         /// 药品
         /// </summary>
         public virtual RawMaterial RawMaterial { get; set; }
+        /// <summary>
+        /// 参数名称
+        /// </summary>
+        public string Name { get; set; }
 
     }
 }

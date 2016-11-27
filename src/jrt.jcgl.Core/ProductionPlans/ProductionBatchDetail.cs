@@ -18,7 +18,7 @@ namespace jrt.jcgl.ProductionPlans
         /// <summary>
         /// 总计划ID
         /// </summary>
-        public virtual long ProductionPlanId { get; set; }
+        public virtual long? ProductionPlanId { get; set; }
         /// <summary>
         /// 序号
         /// </summary>
@@ -26,7 +26,7 @@ namespace jrt.jcgl.ProductionPlans
         /// <summary>
         /// 药品Id
         /// </summary>
-        public virtual int RawMaterialId { get; set; }
+        public virtual int? RawMaterialId { get; set; }
         /// <summary>
         /// 批号
         /// </summary>

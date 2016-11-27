@@ -269,6 +269,7 @@
     <Content Include="App\common\views\common\lookupModal.js" />
     <Content Include="App\common\views\customholidays\createOrEditModal.js" />
     <Content Include="App\common\views\customholidays\index.js" />
+    <Content Include="App\common\views\getbackmaterielinfomanagers\index.js" />
     <Content Include="App\common\views\languages\editTextModal.js" />
     <Content Include="App\common\views\languages\createOrEditModal.js" />
     <Content Include="App\common\views\layout\header.css">
@@ -283,6 +284,8 @@
     <Content Include="App\common\views\layout\sidebar.min.css">
       <DependentUpon>sidebar.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\makingproductions\index.js" />
+    <Content Include="App\common\views\materiellogs\index.js" />
     <Content Include="App\common\views\organizationUnits\index.css">
       <DependentUpon>index.less</DependentUpon>
     </Content>
@@ -2821,6 +2824,9 @@
     <Content Include="App\common\views\rawmaterials\createOrEditModal.cshtml" />
     <Content Include="App\common\views\stocks\index.cshtml" />
     <Content Include="App\common\views\stocks\inputOrOutputModal.cshtml" />
+    <Content Include="App\common\views\materiellogs\index.cshtml" />
+    <Content Include="App\common\views\getbackmaterielinfomanagers\index.cshtml" />
+    <Content Include="App\common\views\makingproductions\index.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

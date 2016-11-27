@@ -116,7 +116,7 @@ namespace jrt.jcgl.Schedulings
         {
             List<OrganizationMember> list = new List<OrganizationMember>();
 
-            var Extract = await _organizationRepository.GetAllListAsync(o => o.Type == OrganizationType.Extract && o.OrganizationUnit1.ParentId != null);
+            var Extract = await _organizationRepository.GetAllListAsync(o => o.Type == OrganizationType.Extract && o.OrganizationUnit.ParentId != null);
             if (Extract.Count >= 3)
                 for (int i = 0; i < 3; i++)
                 {
@@ -137,7 +137,7 @@ namespace jrt.jcgl.Schedulings
         {
             List<OrganizationMember> list = new List<OrganizationMember>();
 
-            var Membrane = await _organizationRepository.GetAllListAsync(o => o.Type == OrganizationType.Membrane && o.OrganizationUnit1.ParentId != null);
+            var Membrane = await _organizationRepository.GetAllListAsync(o => o.Type == OrganizationType.Membrane && o.OrganizationUnit.ParentId != null);
             if (Membrane.Count >= 3)
                 for (int i = 0; i < 3; i++)
                 {

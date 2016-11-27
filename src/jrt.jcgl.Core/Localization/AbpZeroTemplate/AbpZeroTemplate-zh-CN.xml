@@ -393,8 +393,11 @@
     <text name="Enums.jrt.jcgl.Stocks.StockType.YL" value="原料"/>
     <text name="StockLog.HandleUserName" value="出\入库人"/>
     <text name="StockLog.Remark" value="备注"/>
-    <text name="StockLog.HandleTime" value="库存"/>
+    <text name="StockLog.HandleTime" value="操作时间"/>
     <text name="StockLog.SelectUser" value="选择出\入库人"/>
-    <text name="StockLog.Value" value="操作量"/>
+    <text name="StockLog.Quality" value="操作量"/>
+    <text name="StockLog.StockName" value="库存名称"/>
+    <text name="StockLog.OutputTable" value="物料领取记录表"/>
+    <text name="StockLog.InputTable" value="领回物料记录表"/>
   </texts>
 </localizationDictionary>

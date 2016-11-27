@@ -12,7 +12,7 @@ namespace jrt.jcgl.Organizations
     {
         public virtual long OrganizationUnitId { get; set; }
 
-        public virtual OrganizationUnit OrganizationUnit1 { get; set; }
+        public virtual OrganizationUnit OrganizationUnit { get; set; }
 
         public OrganizationType? Type { get; set; }
 

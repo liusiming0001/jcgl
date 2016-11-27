@@ -10,5 +10,7 @@ namespace jrt.jcgl.Common
         Task<ListResultOutput<ComboboxItemDto>> GetEditionsForCombobox();
 
         Task<PagedResultOutput<NameValueDto>> FindUsers(FindUsersInput input);
+
+        Task<PagedResultOutput<NameValueDto>> FindSCX(FindSCXInput input);
     }
 }

@@ -157,6 +157,7 @@
     <Compile Include="Localization\LanguageAppService_Tests.cs" />
     <Compile Include="MultiTenancy\TenantAppService_Tests.cs" />
     <Compile Include="Organizations\OrganizationUnitAppService_Tests.cs" />
+    <Compile Include="ProductionPlans\ProductionPlansAppService_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessions\SessionAppService_Tests.cs" />
     <Compile Include="TestDatas\TestDataBuilder.cs" />

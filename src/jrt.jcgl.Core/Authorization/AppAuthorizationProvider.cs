@@ -71,10 +71,10 @@ namespace jrt.jcgl.Authorization
             var materielinfomanager = productionmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MaterielInfoManagers, L("MaterielInfoManagers"));
             var schedulingsmanagers = productionmanagers.CreateChildPermission(AppPermissions.Pages_ProductionManagers_SchedulingsManagers, L("SchedulingsManagers"));
             //制定生产计划
-            var makingproduction = productionplanningandschedulings.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions, L("MakingProductions"));
-            makingproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Create, L("CreateNewMakingProductions"));
-            makingproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Delete, L("DeletingMakingProductions"));
-            makingproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Edit, L("EditingMakingProductions"));
+            var makingproductions = productionplanningandschedulings.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions, L("MakingProductions"));
+            makingproductions.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Create, L("CreateNewMakingProductions"));
+            makingproductions.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Delete, L("DeletingMakingProductions"));
+            makingproductions.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Edit, L("EditingMakingProductions"));
             //审核生产计划
             var auditproduction = productionplanningandschedulings.CreateChildPermission(AppPermissions.Pages_ProductionManagers_AuditProductions, L("AuditProductions"));
             auditproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_AuditProductions_Edit, L("EditingAuditProductions"));

@@ -18,7 +18,7 @@ namespace jrt.jcgl.ProductionPlans
         /// 序号
         /// </summary>
         public int SerialNumber { get; set; }
-        public virtual long ProductionPlanId { get; set; }
+        public virtual long? ProductionPlanId { get; set; }
         /// <summary>
         /// 计划任务量
         /// </summary>
@@ -42,11 +42,11 @@ namespace jrt.jcgl.ProductionPlans
         /// <summary>
         /// 库存ID
         /// </summary>
-        public virtual int StockId { get; set; }
+        public virtual int? StockId { get; set; }
         /// <summary>
         /// 原料ID
         /// </summary>
-        public virtual int RawMaterialId { get; set; }
+        public virtual int? RawMaterialId { get; set; }
         /// <summary>
         /// 库存实体
         /// </summary>

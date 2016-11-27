@@ -297,6 +297,18 @@
     <Compile Include="Migrations\201611231210242_Alert_StockLog_TypeAndRemark.Designer.cs">
       <DependentUpon>201611231210242_Alert_StockLog_TypeAndRemark.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611260544149_Alert_RawMaterialConstant_Name.cs" />
+    <Compile Include="Migrations\201611260544149_Alert_RawMaterialConstant_Name.Designer.cs">
+      <DependentUpon>201611260544149_Alert_RawMaterialConstant_Name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611260601282_Alert_RawMaterialConstant_RawMaterialId.cs" />
+    <Compile Include="Migrations\201611260601282_Alert_RawMaterialConstant_RawMaterialId.Designer.cs">
+      <DependentUpon>201611260601282_Alert_RawMaterialConstant_RawMaterialId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611260620542_Alert_ProductionPlan_ForgienKey.cs" />
+    <Compile Include="Migrations\201611260620542_Alert_ProductionPlan_ForgienKey.Designer.cs">
+      <DependentUpon>201611260620542_Alert_ProductionPlan_ForgienKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="AbpZeroTemplateDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -452,6 +464,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611231210242_Alert_StockLog_TypeAndRemark.resx">
       <DependentUpon>201611231210242_Alert_StockLog_TypeAndRemark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611260544149_Alert_RawMaterialConstant_Name.resx">
+      <DependentUpon>201611260544149_Alert_RawMaterialConstant_Name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611260601282_Alert_RawMaterialConstant_RawMaterialId.resx">
+      <DependentUpon>201611260601282_Alert_RawMaterialConstant_RawMaterialId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611260620542_Alert_ProductionPlan_ForgienKey.resx">
+      <DependentUpon>201611260620542_Alert_ProductionPlan_ForgienKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

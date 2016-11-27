@@ -14,5 +14,7 @@ namespace jrt.jcgl.Stocks
         Task StockInput(StocksInputDto input);
         Task StockOutput(StocksOutputDto input);
         Task<ListResultOutput<StockListDto>> GetStockList();
+        Task<PagedResultOutput<StockOutputLogDto>> GetStockOutputLog(GetStockOutputLogInput input);
+        Task<PagedResultOutput<StockInputLogDto>> GetStockInputLog(GetStockInputLogInput input);
     }
 }

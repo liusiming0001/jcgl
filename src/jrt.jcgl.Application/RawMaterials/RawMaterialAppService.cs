@@ -135,11 +135,14 @@ namespace jrt.jcgl.RawMaterials
             var raw = await _rawMaterialRepository.FirstOrDefaultAsync(r => r.Name == input.Name);
             if (raw == null)
                 throw new UserFriendlyException("无法找到要更新的药品。");
-            var entiy = input.MapTo(raw);
+            var entiy = input.MapTo(raw);            
+            foreach (var con in entiy.RawMaterialConstant)
+                await _rawMaterialConstantRepository.DeleteAsync(con);
             var constant = input.Constant.MapTo<ICollection<RawMaterialConstant>>();
+            entiy.RawMaterialConstant.Clear();
             entiy.RawMaterialConstant = constant;
             await _rawMaterialRepository.UpdateAsync(entiy);
-        } 
+        }
         #endregion
 
     }

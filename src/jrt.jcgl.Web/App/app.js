@@ -153,6 +153,30 @@ appModule.config([
                 menu: 'ProductionManagers.RawMaterialInfoManagers'
             });
         }
+
+        if (abp.auth.hasPermission('Pages.ProductionManagers.MaterielLogs')) {
+            $stateProvider.state('materiellogs', {
+                url: '/materiellogs',
+                templateUrl: '~/App/common/views/materiellogs/index.cshtml',
+                menu: 'ProductionManagers.MaterielLogs'
+            });
+        }
+
+        if (abp.auth.hasPermission('Pages.ProductionManagers.GetBackMaterielInfoManagers')) {
+            $stateProvider.state('getbackmaterielinfomanagers', {
+                url: '/getbackmaterielinfomanagers',
+                templateUrl: '~/App/common/views/getbackmaterielinfomanagers/index.cshtml',
+                menu: 'ProductionManagers.GetBackMaterielInfoManagers'
+            });
+        }
+
+        if (abp.auth.hasPermission('Pages.ProductionManagers.MakingProductions')) {
+            $stateProvider.state('makingproductions', {
+                url: '/makingproductions',
+                templateUrl: '~/App/common/views/makingproductions/index.cshtml',
+                menu: 'ProductionManagers.MakingProductions'
+            });
+        }
         //HOST routes
 
         $stateProvider.state('host', {

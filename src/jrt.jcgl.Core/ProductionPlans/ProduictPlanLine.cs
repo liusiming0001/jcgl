@@ -17,11 +17,11 @@ namespace jrt.jcgl.ProductionPlans
         /// <summary>
         /// 总计划ID
         /// </summary>
-        public virtual long ProductionPlanId { get; set; }
+        public virtual long? ProductionPlanId { get; set; }
         /// <summary>
         /// 组织机构Id
         /// </summary>
-        public virtual long OrganizationUnitId { get; set; }
+        public virtual long? OrganizationUnitId { get; set; }
         public virtual ProductionPlan ProdutionPlan { get; set; }
         public virtual OrganizationUnit OrganizationUnit { get; set; }
     }

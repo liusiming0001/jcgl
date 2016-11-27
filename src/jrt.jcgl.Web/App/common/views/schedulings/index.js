@@ -1,8 +1,8 @@
 ﻿(function () {
 
     appModule.controller('common.views.schedulings.index', [
-        '$scope', '$modal', 'uiGridConstants', 'abp.services.app.schedulings',
-        function ($scope, $modal, uiGridConstants, schedulingsService) {
+        '$scope', '$modal', 'uiGridConstants', 'abp.services.app.schedulings', 'abp.services.app.productionPlans',
+        function ($scope, $modal, uiGridConstants, schedulingsService, productionPlansService) {
             var vm = this;
 
             $scope.$on('$viewContentLoaded', function () {
@@ -146,7 +146,7 @@
 
             vm.createschedulings = function () {
                 //schedulingsService.schedulingWork("JP2016111801", 1).success(function () { vm.getschedulings(); });
-
+                productionPlansService.createProductionPlans().success();
                 openCreateOrEditRoleModal();
             };
 

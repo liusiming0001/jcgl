@@ -18,37 +18,37 @@
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
                         <input class="form-control" type="text"
                                ng-class="{'edited':vm.raw.batchNumber}"
-                               ng-model="vm.raw.batchNumber" required>
+                               ng-model="vm.raw.batchNumber" >
                         <label>@L("RawMaterial.BatchNumber")</label>
                     </div>
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
                         <input class="form-control" type="text"
                                ng-class="{'edited':vm.raw.producer}"
-                               ng-model="vm.raw.producer" required>
+                               ng-model="vm.raw.producer" >
                         <label>@L("RawMaterial.Producer")</label>
                     </div>
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
                         <input class="form-control" type="text"
                                ng-class="{'edited':vm.raw.manufacturer}"
-                               ng-model="vm.raw.manufacturer" required>
+                               ng-model="vm.raw.manufacturer" >
                         <label>@L("RawMaterial.Manufacturer")</label>
                     </div>
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
                         <input class="form-control" type="text"
                                ng-class="{'edited':vm.raw.supplier}"
-                               ng-model="vm.raw.supplier" required>
+                               ng-model="vm.raw.supplier" >
                         <label>@L("RawMaterial.Supplier")</label>
                     </div>
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
                         <input class="form-control" type="text"
                                ng-class="{'edited':vm.raw.level}"
-                               ng-model="vm.raw.level" required>
+                               ng-model="vm.raw.level" >
                         <label>@L("RawMaterial.Level")</label>
                     </div>
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
                         <input class="form-control" type="text"
                                ng-class="{'edited':vm.raw.specifications}"
-                               ng-model="vm.raw.specifications" required>
+                               ng-model="vm.raw.specifications">
                         <label>@L("RawMaterial.Specifications")</label>
                     </div>
                     <div class="form-group form-md-line-input form-md-floating-label ">
@@ -61,7 +61,7 @@
                 </tab>
                 <tab heading="@L("RawMaterialConstant")">
                     <div class="form-group form-md-line-input form-md-floating-label no-hint" ng-repeat="item in vm.raw.constant">
-                        <input class="form-control" type="number" name="{{item.constant}}" ng-model="item.constant" required>
+                        <input class="form-control" type="number" name="{{item.constant}}" ng-model="item.constant" ng-class="{'edited':item.constant}"required>
                         <label>
                             {{item.name}}
                         </label>

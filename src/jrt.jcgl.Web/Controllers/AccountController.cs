@@ -38,6 +38,7 @@ using jrt.jcgl.Web.Models.Account;
 using jrt.jcgl.Web.MultiTenancy;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
+using jrt.jcgl.ProductionPlans;
 
 namespace jrt.jcgl.Web.Controllers
 {
@@ -52,7 +53,7 @@ namespace jrt.jcgl.Web.Controllers
         private readonly ITenancyNameFinder _tenancyNameFinder;
         private readonly ICacheManager _cacheManager;
         private readonly IWebUrlService _webUrlService;
-
+        private readonly IProductionPlansAppService _productionPlansAppService;
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -70,7 +71,8 @@ namespace jrt.jcgl.Web.Controllers
             IUnitOfWorkManager unitOfWorkManager,
             ITenancyNameFinder tenancyNameFinder, 
             ICacheManager cacheManager, 
-            IWebUrlService webUrlService)
+            IWebUrlService webUrlService,
+            IProductionPlansAppService _productionPlansAppService)
         {
             _userManager = userManager;
             _multiTenancyConfig = multiTenancyConfig;
@@ -81,6 +83,7 @@ namespace jrt.jcgl.Web.Controllers
             _tenancyNameFinder = tenancyNameFinder;
             _cacheManager = cacheManager;
             _webUrlService = webUrlService;
+            this._productionPlansAppService = _productionPlansAppService;
         }
 
         #region Login / Logout
@@ -111,6 +114,8 @@ namespace jrt.jcgl.Web.Controllers
         public virtual async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
             CheckModelState();
+
+            //await _productionPlansAppService.CreateProductionPlans();
 
             _unitOfWorkManager.Current.DisableFilter(AbpDataFilters.MayHaveTenant);
 
