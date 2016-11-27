@@ -19,7 +19,7 @@ namespace jrt.jcgl.Tests.ProductionPlans
         [Fact]
         public async Task Test_CreateProductionPlans()
         {
-            await _productionPlansAppService.CreateProductionPlans();
+            //await _productionPlansAppService.CreateProductionPlans();
         }
     }
 }

@@ -177,6 +177,14 @@ appModule.config([
                 menu: 'ProductionManagers.MakingProductions'
             });
         }
+
+        if (abp.auth.hasPermission('Pages.ProductionManagers.ProductionsHistory')) {
+            $stateProvider.state('productionshistorys', {
+                url: '/productionshistorys',
+                templateUrl: '~/App/common/views/productionshistorys/index.cshtml',
+                menu: 'ProductionManagers.ProductionsHistory'
+            });
+        }
         //HOST routes
 
         $stateProvider.state('host', {

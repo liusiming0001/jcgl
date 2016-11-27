@@ -75,6 +75,8 @@ namespace jrt.jcgl.Authorization
             makingproductions.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Create, L("CreateNewMakingProductions"));
             makingproductions.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Delete, L("DeletingMakingProductions"));
             makingproductions.CreateChildPermission(AppPermissions.Pages_ProductionManagers_MakingProductions_Edit, L("EditingMakingProductions"));
+
+            var productionshistory = productionplanningandschedulings.CreateChildPermission(AppPermissions.Pages_ProductionManagers_ProductionsHistory, L("ProductionsHistory"));
             //审核生产计划
             var auditproduction = productionplanningandschedulings.CreateChildPermission(AppPermissions.Pages_ProductionManagers_AuditProductions, L("AuditProductions"));
             auditproduction.CreateChildPermission(AppPermissions.Pages_ProductionManagers_AuditProductions_Edit, L("EditingAuditProductions"));

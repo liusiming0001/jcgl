@@ -87,6 +87,10 @@
         public const string Pages_ProductionManagers_MakingProductions_Delete = "Pages.ProductionManagers.MakingProductions.Delete";
         public const string Pages_ProductionManagers_MakingProductions_Edit = "Pages.ProductionManagers.MakingProductions.Edit";
         /// <summary>
+        /// 生产计划历史纪录
+        /// </summary>
+        public const string Pages_ProductionManagers_ProductionsHistory = "Pages.ProductionManagers.ProductionsHistory";
+        /// <summary>
         /// 审核生产计划权限
         /// </summary>
         public const string Pages_ProductionManagers_AuditProductions = "Pages.ProductionManagers.AuditProductions";

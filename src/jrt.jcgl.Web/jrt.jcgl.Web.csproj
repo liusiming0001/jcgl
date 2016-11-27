@@ -294,6 +294,7 @@
     <Content Include="App\common\views\organizationUnits\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\productionshistorys\index.js" />
     <Content Include="App\common\views\rawmaterials\createOrEditModal.js" />
     <Content Include="App\common\views\rawmaterials\index.js" />
     <Content Include="App\common\views\schedulingsdays\index.js" />
@@ -2827,6 +2828,7 @@
     <Content Include="App\common\views\materiellogs\index.cshtml" />
     <Content Include="App\common\views\getbackmaterielinfomanagers\index.cshtml" />
     <Content Include="App\common\views\makingproductions\index.cshtml" />
+    <Content Include="App\common\views\productionshistorys\index.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

@@ -399,5 +399,15 @@
     <text name="StockLog.StockName" value="库存名称"/>
     <text name="StockLog.OutputTable" value="物料领取记录表"/>
     <text name="StockLog.InputTable" value="领回物料记录表"/>
+    <text name="SelectASCX" value="选择一条生产线"/>
+
+    <text name ="Production.Demand" value="计划生产量"/>
+    <text name ="Production.StartDate" value="计划生开始日期"/>
+    <text name ="Production.SCX" value="计划生产线"/>
+    <text name ="Production.Create" value="添加"/>
+
+    <text name="ProductionsHistory" value="生产计划记录"/>
+    <text name="Stocks.Edit" value="修改库存"/>
+
   </texts>
 </localizationDictionary>

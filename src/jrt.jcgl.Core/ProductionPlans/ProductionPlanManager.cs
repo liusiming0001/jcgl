@@ -177,7 +177,7 @@ namespace jrt.jcgl.ProductionPlans
                     int organzationcount = 0;
                     if (count == 0)
                     {
-                        WorkDate = StartDate;
+                        WorkDate = getStartDate(StartDate, RestType);
                     }
                     else
                         WorkDate = getWorkDate(WorkDate, RestType);
@@ -206,6 +206,12 @@ namespace jrt.jcgl.ProductionPlans
                 throw e;
             }
         }
+        /// <summary>
+        /// 从起始日期后判断
+        /// </summary>
+        /// <param name="LastBatchDate"></param>
+        /// <param name="RestType"></param>
+        /// <returns></returns>
         private DateTime getWorkDate(DateTime LastBatchDate, RestType RestType)
         {
             var output = new DateTime();
@@ -234,12 +240,41 @@ namespace jrt.jcgl.ProductionPlans
             }
             return output;
         }
-
+        /// <summary>
+        /// 判断起始日期
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        private DateTime getStartDate(DateTime LastBatchDate, RestType RestType)
+        {
+            var output = new DateTime();
+            int day = 0;
+            int workday = 0;
+            while (true)
+            {
+                output = getdate(LastBatchDate, day);
+                bool flag = false;
+                switch (RestType)
+                {
+                    case RestType.Normal: flag = isHolidayType1(output); break;
+                    case RestType.Single: flag = isHolidayType2(output); break;
+                    case RestType.Custom: flag = isHolidayType3(output); break;
+                    default: break;
+                }
+                if (flag == false)
+                {
+                    break;
+                }
+                day++;
+            }
+            return output;
+        }
         public DateTime getdate(DateTime date, int i)
         {
             int year = date.Year;
             int month = date.Month;
-            int day = date.Day+ i;
+            int day = date.Day + i;
             if ((month == 1 ||
                 month == 3 ||
                 month == 5 ||
@@ -248,13 +283,13 @@ namespace jrt.jcgl.ProductionPlans
                 month == 10) && day > 31)
             {
                 month++;
-                day = day-31;
+                day = day - 31;
             }
             if (month == 12 && day > 31)
             {
                 month = 1;
                 year++;
-                day = day-31;
+                day = day - 31;
             }
             if ((month == 4 ||
                 month == 6 ||

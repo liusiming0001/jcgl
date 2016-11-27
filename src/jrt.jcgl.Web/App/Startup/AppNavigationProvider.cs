@@ -66,6 +66,13 @@ namespace jrt.jcgl.Web.App.Startup
                             icon: "icon-plus",
                             requiredPermissionName: AppPermissions.Pages_ProductionManagers_MaterielLogs
                             )
+                        ).AddItem(new MenuItemDefinition(
+                            PageNames.App.ProductionManager.ProductionsHistory,
+                            L("ProductionsHistory"),
+                            url: "productionshistorys",
+                            icon: "icon-plus",
+                            requiredPermissionName: AppPermissions.Pages_ProductionManagers_ProductionsHistory
+                            )
                         )
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.ProductionManager.ExecuteProductions,
