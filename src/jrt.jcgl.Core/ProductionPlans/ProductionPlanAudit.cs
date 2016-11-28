@@ -32,7 +32,7 @@ namespace jrt.jcgl.ProductionPlans
         /// <summary>
         /// 审核状态
         /// </summary>
-        public AuditType Status { get; set; }
+        public AuditStatus Status { get; set; }
         /// <summary>
         /// 审核人实体
         /// </summary>

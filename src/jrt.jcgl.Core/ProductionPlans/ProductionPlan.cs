@@ -4,12 +4,13 @@
 // Purpose: Definition of Class ProductionPlan
 
 using Abp.Domain.Entities.Auditing;
+using jrt.jcgl.Authorization.Users;
 using System;
 using System.Collections.Generic;
 
 namespace jrt.jcgl.ProductionPlans
 {
-    public class ProductionPlan : FullAuditedEntity<long>
+    public class ProductionPlan : FullAuditedEntity<long,User>
     {
         /// <summary>
         /// 需求量
@@ -19,6 +20,7 @@ namespace jrt.jcgl.ProductionPlans
         /// 起始日期
         /// </summary>
         public DateTime StartDate { get; set; }
+        public AuditStatus AuditStatus { get; set; }
         /// <summary>
         /// 审核日志
         /// </summary>

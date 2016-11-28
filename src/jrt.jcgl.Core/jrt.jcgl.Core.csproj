@@ -132,7 +132,7 @@
     <Compile Include="MultiTenancy\TenantManager.cs" />
     <Compile Include="Organizations\Organization.cs" />
     <Compile Include="Organizations\OrganizationType.cs" />
-    <Compile Include="ProductionPlans\AuditType.cs" />
+    <Compile Include="ProductionPlans\AuditStatus.cs" />
     <Compile Include="ProductionPlans\IProductionPlanManager.cs" />
     <Compile Include="ProductionPlans\ProductionBatchDetail.cs" />
     <Compile Include="ProductionPlans\ProductionPlan.cs" />

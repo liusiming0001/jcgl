@@ -213,6 +213,9 @@
     <Compile Include="Organizations\OrganizationUnitAppService.cs" />
     <Compile Include="Organizations\Dto\OrganizationUnitUserListDto.cs" />
     <Compile Include="ProductionPlans\Dto\CreateProductionPlanDto.cs" />
+    <Compile Include="ProductionPlans\Dto\GetProductionHistoryListInput.cs" />
+    <Compile Include="ProductionPlans\Dto\ProductionPlanInfoDto.cs" />
+    <Compile Include="ProductionPlans\Dto\ProductionsHistoryListDto.cs" />
     <Compile Include="ProductionPlans\IProductionPlansAppService.cs" />
     <Compile Include="ProductionPlans\ProductionPlansAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

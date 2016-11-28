@@ -309,6 +309,14 @@
     <Compile Include="Migrations\201611260620542_Alert_ProductionPlan_ForgienKey.Designer.cs">
       <DependentUpon>201611260620542_Alert_ProductionPlan_ForgienKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611270727115_Alert_ProductionPlan_AuditStatus.cs" />
+    <Compile Include="Migrations\201611270727115_Alert_ProductionPlan_AuditStatus.Designer.cs">
+      <DependentUpon>201611270727115_Alert_ProductionPlan_AuditStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611270747582_Alert_ProductionPlan_CreatorUser.cs" />
+    <Compile Include="Migrations\201611270747582_Alert_ProductionPlan_CreatorUser.Designer.cs">
+      <DependentUpon>201611270747582_Alert_ProductionPlan_CreatorUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="AbpZeroTemplateDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -473,6 +481,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611260620542_Alert_ProductionPlan_ForgienKey.resx">
       <DependentUpon>201611260620542_Alert_ProductionPlan_ForgienKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611270727115_Alert_ProductionPlan_AuditStatus.resx">
+      <DependentUpon>201611270727115_Alert_ProductionPlan_AuditStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611270747582_Alert_ProductionPlan_CreatorUser.resx">
+      <DependentUpon>201611270747582_Alert_ProductionPlan_CreatorUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

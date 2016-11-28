@@ -409,5 +409,15 @@
     <text name="ProductionsHistory" value="生产计划记录"/>
     <text name="Stocks.Edit" value="修改库存"/>
 
+    <text name="ProductionsHistory.CreateUserName" value="指定人"/>
+    <text name="ProductionsHistory.Demand" value="任务量"/>
+    <text name="ProductionsHistory.StartDate" value="任务起始日期"/>
+    <text name="ProductionsHistory.AuditStatus" value="审核状态"/>
+
+    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.Submitted" value="已提交"/>
+    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.WorkshopDirectorPass" value="车间主任通过"/>
+    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.WorkshopDirectorUnPass" value="车间主任未通过"/>
+    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.GeneralManagementPass" value="综合管理部审批"/>
+    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.GeneralManagementUnPass" value="综合管理部未通过"/>
   </texts>
 </localizationDictionary>
