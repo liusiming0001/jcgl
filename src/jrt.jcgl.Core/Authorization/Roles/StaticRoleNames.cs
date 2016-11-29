@@ -16,6 +16,10 @@
             public const string Extract = "Extract";
 
             public const string Membrane = "Membrane";
+
+            public const string WorkShopDirector = "WorkShopDirector";
+
+            public const string GeneralManagement = "GeneralManagement";
         }
     }
 }

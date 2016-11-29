@@ -15,5 +15,7 @@ namespace jrt.jcgl.ProductionPlans
         ListResultDto<NameValueDto> GetSchedulingTypes();
         Task<PagedResultOutput<ProductionsHistoryListDto>> GetProductionPlansList(GetProductionHistoryListInput input);
         Task<ProductionPlanInfoDto> GetProductionPlanInfo(long id);
+        Task AuditProductionPlan(AuditProductionPlanDto input);
+        Task<PagedResultOutput<ProductionsHistoryListDto>> GetProductionPlansListFForAudit(GetProductionHistoryListInput input);
     }
 }

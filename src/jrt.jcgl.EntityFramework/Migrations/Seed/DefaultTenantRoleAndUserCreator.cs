@@ -228,6 +228,21 @@ namespace jrt.jcgl.Migrations.Seed
             InsertCustomers(defaluttenants, membrane, "膜一组三号");
             InsertCustomers(defaluttenants, membrane, "膜二组三号");
             InsertCustomers(defaluttenants, membrane, "膜三组三号");
+
+            var workshopdirector = _context.Roles.FirstOrDefault(r => r.TenantId == defaluttenants.Id && r.Name == StaticRoleNames.Tenants.WorkShopDirector);
+            if (workshopdirector == null)
+            {
+                workshopdirector = _context.Roles.Add(new Role(defaluttenants.Id, StaticRoleNames.Tenants.WorkShopDirector, StaticRoleDisplayNames.Tenants.WorkShopDirector) { IsStatic = true });
+                _context.SaveChanges();
+            }
+
+
+            var generalmanagement = _context.Roles.FirstOrDefault(r => r.TenantId == defaluttenants.Id && r.Name == StaticRoleNames.Tenants.GeneralManagement);
+            if (generalmanagement == null)
+            {
+                generalmanagement = _context.Roles.Add(new Role(defaluttenants.Id, StaticRoleNames.Tenants.GeneralManagement, StaticRoleDisplayNames.Tenants.GeneralManagement) { IsStatic = true });
+                _context.SaveChanges();
+            }
         }
 
         private void InsertCustomers(Tenant defaultTenant, Role userRoleForDefaultTenant, string customerName)

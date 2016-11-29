@@ -416,8 +416,8 @@
     <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.Submitted" value="已提交"/>
     <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.WorkshopDirectorPass" value="车间主任通过"/>
     <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.WorkshopDirectorUnPass" value="车间主任未通过"/>
-    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.GeneralManagementPass" value="综合管理部审批"/>
-    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.GeneralManagementUnPass" value="综合管理部未通过"/>
+    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.GeneralManagementPass" value="综合管理部审核通过"/>
+    <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.GeneralManagementUnPass" value="综合管理部审核未通过"/>
 
     <text name="ProductionPlanDetail" value="生产计划明细"/>
     <text name="ProductionPlanDetails.batchNum" value="批号"/>

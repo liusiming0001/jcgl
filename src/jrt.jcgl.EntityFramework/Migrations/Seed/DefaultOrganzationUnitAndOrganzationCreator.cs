@@ -53,7 +53,7 @@ namespace jrt.jcgl.Migrations.Seed
             var scx2 = InsertOrganzationUnit(defaultTenant, "2号生产线", "0002");
             if (scx2 != null)
             {
-                InsertOrganization(scx1, OrganizationType.ProdutionLine);
+                InsertOrganization(scx2, OrganizationType.ProdutionLine);
                 var tiqu = InsertOrganzationUnit(defaultTenant, "2号提取组", "0002.0001", scx2);
                 if (tiqu != null)
                 {

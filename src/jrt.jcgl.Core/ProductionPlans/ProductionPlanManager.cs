@@ -174,7 +174,7 @@ namespace jrt.jcgl.ProductionPlans
                 var SCXCount = OrganzationUnitIds.Count();
                 foreach (var item in ProdutionPlanMains)
                 {
-
+                    int ps = 0;
                     for (int i = 0; i < item.PS; i++)
                     {
                         int organzationcount = 0;
@@ -186,6 +186,7 @@ namespace jrt.jcgl.ProductionPlans
                             WorkDate = getWorkDate(WorkDate, RestType);
                         foreach (var o in OrganzationUnitIds)
                         {
+                            ps++;
                             organzationcount++;
                             count++;
                             var unit = await _organizationUnitRepository.FirstOrDefaultAsync(o);
@@ -202,6 +203,8 @@ namespace jrt.jcgl.ProductionPlans
                                 MissionDate = WorkDate,
                                 BatchNum = getBatchNum(WorkDate, organzationcount, false)
                             });
+                            if (ps == item.PS)
+                                break;
                         }
                     }
                 }

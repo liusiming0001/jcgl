@@ -266,6 +266,7 @@
     <Content Include="App\common\views\auditLogs\detailModal.min.css">
       <DependentUpon>detailModal.css</DependentUpon>
     </Content>
+    <Content Include="App\common\views\auditproductions\detailModal.js" />
     <Content Include="App\common\views\auditproductions\index.js" />
     <Content Include="App\common\views\common\lookupModal.js" />
     <Content Include="App\common\views\customholidays\createOrEditModal.js" />
@@ -2833,6 +2834,7 @@
     <Content Include="App\common\views\productionshistorys\index.cshtml" />
     <Content Include="App\common\views\auditproductions\index.cshtml" />
     <Content Include="App\common\views\productionshistorys\detailModal.cshtml" />
+    <Content Include="App\common\views\auditproductions\detailModal.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />
