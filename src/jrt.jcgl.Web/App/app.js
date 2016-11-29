@@ -178,6 +178,14 @@ appModule.config([
             });
         }
 
+        if (abp.auth.hasPermission('Pages.ProductionManagers.AuditProductions')) {
+            $stateProvider.state('auditproductions', {
+                url: '/auditproductions',
+                templateUrl: '~/App/common/views/auditproductions/index.cshtml',
+                menu: 'ProductionManagers.AuditProductions'
+            });
+        }
+
         if (abp.auth.hasPermission('Pages.ProductionManagers.ProductionsHistory')) {
             $stateProvider.state('productionshistorys', {
                 url: '/productionshistorys',

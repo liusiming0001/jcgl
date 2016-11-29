@@ -33,7 +33,7 @@ namespace jrt.jcgl.ProductionPlans
             try
             {
                 await _productionPlanManager.FormulateProdutionPlan(
-                        input.Value,
+                        input.Value * 1000,
                         input.StartDateTime,
                         input.Organzations,
                         input.RestType
@@ -52,12 +52,14 @@ namespace jrt.jcgl.ProductionPlans
         {
             try
             {
+
                 var query = _productionPlanRepository.GetAll()
                     .WhereIf(!input.Filter.IsNullOrWhiteSpace(), p => p.CreatorUser.Name.Contains(input.Filter))
                     .WhereIf(input.StartDate.HasValue, p => p.StartDate == input.StartDate);
                 var items = from p in query
                             select new ProductionsHistoryListDto
                             {
+                                Id = p.Id,
                                 StartDate = p.StartDate,
                                 Demand = p.Demand,
                                 AuditStatus = p.AuditStatus,

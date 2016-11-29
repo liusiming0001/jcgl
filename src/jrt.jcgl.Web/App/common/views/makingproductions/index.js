@@ -9,10 +9,12 @@
             vm.types = [];
             vm.type_selcet = null;
             vm.organzations = [];
+            vm.loading = false;
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
             });
             vm.createProductionPlan = function () {
+                vm.loading = true;
                 if (vm.startdate != null)
                     vm.startdate = vm.startdate.toLocaleDateString();
                 var member = new Array(vm.organzations.length);
@@ -28,9 +30,9 @@
                     abp.notify.info(app.localize('SavedSuccessfully'));
                     vm.value = null;
                     vm.startdate = null;
-                    vm.types = [];
                     vm.type_selcet = null;
                     vm.organzations = [];
+                    vm.loading = false;
                 });
             }
 

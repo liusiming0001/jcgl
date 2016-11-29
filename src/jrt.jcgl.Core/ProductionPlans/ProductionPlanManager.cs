@@ -174,29 +174,35 @@ namespace jrt.jcgl.ProductionPlans
                 var SCXCount = OrganzationUnitIds.Count();
                 foreach (var item in ProdutionPlanMains)
                 {
-                    int organzationcount = 0;
-                    if (count == 0)
+
+                    for (int i = 0; i < item.PS; i++)
                     {
-                        WorkDate = getStartDate(StartDate, RestType);
-                    }
-                    else
-                        WorkDate = getWorkDate(WorkDate, RestType);
-                    foreach (var o in OrganzationUnitIds)
-                    {
-                        organzationcount++;
-                        count++;
-                        var unit = await _organizationUnitRepository.FirstOrDefaultAsync(o);
-                        await _productionBatchDetailRepository.InsertAsync(new ProductionBatchDetail
+                        int organzationcount = 0;
+                        if (count == 0)
                         {
-                            SerailNum = count,
-                            ProductionLine = unit.DisplayName,
-                            MissionQuantity = item.ProductionQuantity / SCXCount,
-                            BatchQuantity = GetRawMaterialConstant(item.RawMaterial, RawMaterialConstantType.N),
-                            CYL = GetRawMaterialConstant(item.RawMaterial, RawMaterialConstantType.CYL),
-                            SGL = GetRawMaterialConstant(item.RawMaterial, RawMaterialConstantType.SGL),
-                            MissionDate = WorkDate,
-                            BatchNum = getBatchNum(WorkDate, organzationcount, false)
-                        });
+                            WorkDate = getStartDate(StartDate, RestType);
+                        }
+                        else
+                            WorkDate = getWorkDate(WorkDate, RestType);
+                        foreach (var o in OrganzationUnitIds)
+                        {
+                            organzationcount++;
+                            count++;
+                            var unit = await _organizationUnitRepository.FirstOrDefaultAsync(o);
+                            await _productionBatchDetailRepository.InsertAsync(new ProductionBatchDetail
+                            {
+                                RawMaterialId = item.RawMaterialId,
+                                ProductionPlanId = item.ProductionPlanId,
+                                SerailNum = count,
+                                ProductionLine = unit.DisplayName,
+                                MissionQuantity = item.ProductionQuantity / (SCXCount * item.PS),
+                                BatchQuantity = GetRawMaterialConstant(item.RawMaterial, RawMaterialConstantType.N),
+                                CYL = GetRawMaterialConstant(item.RawMaterial, RawMaterialConstantType.CYL),
+                                SGL = GetRawMaterialConstant(item.RawMaterial, RawMaterialConstantType.SGL),
+                                MissionDate = WorkDate,
+                                BatchNum = getBatchNum(WorkDate, organzationcount, false)
+                            });
+                        }
                     }
                 }
             }

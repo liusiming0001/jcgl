@@ -1,0 +1,57 @@
+﻿@using jrt.jcgl.Localization
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title">
+            <span>@L("ProductionPlanDetail")</span>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-body">
+            <h3 class="form-section">@L("ProductionPlan.Info")</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">@L("ProductionPlan.createUserName"):</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                {{vm.productionPlan.productionPlan.createUserName}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">@L("ProductionPlan.demand"):</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                {{vm.productionPlan.productionPlan.demand}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">@L("ProductionPlan.startDate"):</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                {{vm.productionPlan.productionPlan.startDate}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">@L("ProductionPlan.auditStatus"):</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                {{vm.productionPlan.productionPlan.auditStatus}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div busy-if="vm.loading">
+                <div ui-grid="vm.productionMainGridOptions" ui-grid-resize-columns dir=@(CultureHelper.IsRtl ? "rtl" : "")></div>
+            </div>
+            <div busy-if="vm.loading">
+                <div ui-grid="vm.productionPlanDetailsGridOptions" ui-grid-resize-columns dir=@(CultureHelper.IsRtl ? "rtl" : "")></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="vm.close()">@L("Close")</button>
+        </div>
+    </div>

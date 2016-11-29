@@ -401,7 +401,7 @@
     <text name="StockLog.InputTable" value="领回物料记录表"/>
     <text name="SelectASCX" value="选择一条生产线"/>
 
-    <text name ="Production.Demand" value="计划生产量"/>
+    <text name ="Production.Demand" value="计划生产量(单位：吨)"/>
     <text name ="Production.StartDate" value="计划生开始日期"/>
     <text name ="Production.SCX" value="计划生产线"/>
     <text name ="Production.Create" value="添加"/>
@@ -409,15 +409,40 @@
     <text name="ProductionsHistory" value="生产计划记录"/>
     <text name="Stocks.Edit" value="修改库存"/>
 
-    <text name="ProductionsHistory.CreateUserName" value="指定人"/>
+    <text name="ProductionsHistory.CreateUserName" value="制定人"/>
     <text name="ProductionsHistory.Demand" value="任务量"/>
     <text name="ProductionsHistory.StartDate" value="任务起始日期"/>
     <text name="ProductionsHistory.AuditStatus" value="审核状态"/>
-
     <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.Submitted" value="已提交"/>
     <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.WorkshopDirectorPass" value="车间主任通过"/>
     <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.WorkshopDirectorUnPass" value="车间主任未通过"/>
     <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.GeneralManagementPass" value="综合管理部审批"/>
     <text name="Enums.jrt.jcgl.ProductionPlans.AuditStatus.GeneralManagementUnPass" value="综合管理部未通过"/>
+
+    <text name="ProductionPlanDetail" value="生产计划明细"/>
+    <text name="ProductionPlanDetails.batchNum" value="批号"/>
+    <text name="ProductionPlanDetails.batchQuantity" value="本批次生产量"/>
+    <text name="ProductionPlanDetails.cyl" value="出药量"/>
+    <text name="ProductionPlanDetails.missionDate" value="计划生产日期"/>
+    <text name="ProductionPlanDetails.productionLine" value="生产线"/>
+    <text name="ProductionPlanDetails.rawMaterialName" value="药品名称"/>
+    <text name="ProductionPlanDetails.serailNum" value="序号"/>
+    <text name="ProductionPlanDetails.sgl" value="收膏率"/>
+    <text name="ProductionPlanDetails.missionQuantity" value="计划任务量"/>
+
+    <text name="ProductionMain.plannedQuantity" value="计划任务量"/>
+    <text name="ProductionMain.productionQuantity" value="实际生产量"/>
+    <text name="ProductionMain.ps" value="批数"/>
+    <text name="ProductionMain.rawMaterialName" value="药品名称"/>
+    <text name="ProductionMain.rawMaterialRequirement" value="原料需求量"/>
+    <text name="ProductionMain.serialNumber" value="序号"/>
+    <text name="ProductionMain.stockQuantity" value="库存量"/>
+
+    <text name="ProductionPlan.Info" value="生产计划基本信息"/>
+    <text name="ProductionPlan.createUserName" value="制定人"/>
+    <text name="ProductionPlan.demand" value="需求量"/>
+    <text name="ProductionPlan.startDate" value="计划任务日期"/>
+    <text name="ProductionPlan.auditStatus" value="审核状态"/>
+    
   </texts>
 </localizationDictionary>

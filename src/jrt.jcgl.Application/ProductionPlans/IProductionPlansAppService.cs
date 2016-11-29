@@ -13,5 +13,7 @@ namespace jrt.jcgl.ProductionPlans
     {
         Task CreateProductionPlans(CreateProductionPlanDto input);
         ListResultDto<NameValueDto> GetSchedulingTypes();
+        Task<PagedResultOutput<ProductionsHistoryListDto>> GetProductionPlansList(GetProductionHistoryListInput input);
+        Task<ProductionPlanInfoDto> GetProductionPlanInfo(long id);
     }
 }
